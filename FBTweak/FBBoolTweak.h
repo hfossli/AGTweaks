@@ -7,10 +7,13 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "FBTweak.h"
 
-@interface FBAppDelegate : UIResponder <UIApplicationDelegate>
+@interface FBBoolTweak : FBTweak
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, assign) BOOL defaultValue;
+
+@property (nonatomic, assign) BOOL currentValue;
 
 @end

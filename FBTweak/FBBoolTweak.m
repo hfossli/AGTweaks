@@ -14,7 +14,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [self initWithCoder:coder];
+    self = [super initWithCoder:coder];
     if(self)
     {
         _defaultValue = [coder decodeBoolForKey:@"defaultValue"];

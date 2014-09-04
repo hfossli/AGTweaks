@@ -2,10 +2,10 @@
 // Created by Agens AS for FBTweak on 03.09.14.
 //
 
-#import "_NEWFBTweakTableViewCell.h"
+#import "_FBTweakTableViewCell.h"
 #import "FBIntegerTweak.h"
 
-@interface _FBTweakTableViewIntegerCell : _NEWFBTweakTableViewCell
+@interface _FBTweakTableViewIntegerCell : _FBTweakTableViewCell
 
 @property (nonatomic, strong) FBIntegerTweak *tweak;
 

@@ -193,7 +193,7 @@
     Class cellClass = [self cellClassForTweak:tweak];
 
     NSString *cellIdentifier = NSStringFromClass(cellClass);
-    _NEWFBTweakTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    _FBTweakTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(cell == nil)
     {
         cell = [[cellClass alloc] initWithReuseIdentifier:cellIdentifier];
@@ -270,7 +270,7 @@
     }
     else
     {
-        return [_NEWFBTweakTableViewCell class];
+        return [_FBTweakTableViewCell class];
     }
 }
 

@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Facebook. All rights reserved.
 //
 
-#import "_NEWFBTweakTableViewCell.h"
+#import "_FBTweakTableViewCell.h"
 #import "FBBoolTweak.h"
 
-@interface _FBTweakTableViewBoolCell : _NEWFBTweakTableViewCell
+@interface _FBTweakTableViewBoolCell : _FBTweakTableViewCell
 
 @property (nonatomic, strong) FBBoolTweak *tweak;
 

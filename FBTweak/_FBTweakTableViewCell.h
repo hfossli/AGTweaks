@@ -1,29 +1,29 @@
-/**
- Copyright (c) 2014-present, Facebook, Inc.
- All rights reserved.
- 
- This source code is licensed under the BSD-style license found in the
- LICENSE file in the root directory of this source tree. An additional grant
- of patent rights can be found in the PATENTS file in the same directory.
- */
+//
+//  _NEWFBTweakTableViewCell.h
+//  FBTweak
+//
+//  Created by Maria Fossli on 02.09.14.
+//  Copyright (c) 2014 Facebook. All rights reserved.
+//
 
 #import <UIKit/UIKit.h>
+#import "FBTweak.h"
 
-@class FBTweak;
-
-/**
-  @abstract A table cell to edit a tweak.
+/*
+ Responsibility:
+ - sets up accessoryView
+ - sets up default styling
+ - layout accessoryView appropriately
  */
-@interface _FBTweakTableViewCell : UITableViewCell
 
-/**
-  @abstract Create a tweak table cell.
-  @param reuseIdentifier The cell's reuse identifier.
-  @discussion This is the designated initializer.
- */
-- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+@interface _FBTweakTableViewCell : UITableViewCell <UITextFieldDelegate>
 
-//! @abstract The tweak to show in the cell.
-@property (nonatomic, strong, readwrite) FBTweak *tweak;
+@property (nonatomic, strong) FBTweak *tweak;
+
+@property (nonatomic, strong, readonly) UITextField *textField;
+
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
++ (CGFloat)neededHeightForTweak:(FBTweak *)tweak;
 
 @end

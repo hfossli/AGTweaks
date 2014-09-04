@@ -37,6 +37,7 @@
         __inline_tweak = [[class_ alloc] initWithIdentifier:identifier]; \
         [collection addTweak:__inline_tweak]; \
     } \
+    NSAssert([__inline_tweak isKindOfClass:[class_ class]], @"You have defined '%@ > %@ > %@' twice, but with different types.", category_, collection_, name_); \
     \
     return __inline_tweak; \
 }())

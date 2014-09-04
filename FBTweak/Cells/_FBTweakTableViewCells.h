@@ -6,3 +6,4 @@
 #import "_FBTweakTableViewSelectAmongFewValuesCell.h"
 #import "_FBTweakTableViewSelectAmongManyValuesCell.h"
 #import "_FBTweakTableViewStringCell.h"
+#import "_FBTweakTableViewActionCell.h"

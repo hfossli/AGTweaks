@@ -49,10 +49,6 @@
 		4C31796F19B5F00600081E66 /* FBStringTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C31796D19B5F00600081E66 /* FBStringTweak.m */; };
 		4C31797319B5F2A000081E66 /* FBActionTweak.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C31797119B5F2A000081E66 /* FBActionTweak.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C31797419B5F2A000081E66 /* FBActionTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C31797219B5F2A000081E66 /* FBActionTweak.m */; };
-		4C31797719B630AB00081E66 /* _FBTweakTableViewBoolCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C31797519B630AB00081E66 /* _FBTweakTableViewBoolCell.h */; };
-		4C31797819B630AB00081E66 /* _FBTweakTableViewBoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C31797619B630AB00081E66 /* _FBTweakTableViewBoolCell.m */; };
-		4C31797B19B6310A00081E66 /* _FBTweakTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C31797919B6310A00081E66 /* _FBTweakTableViewCell.h */; };
-		4C31797C19B6310A00081E66 /* _FBTweakTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C31797A19B6310A00081E66 /* _FBTweakTableViewCell.m */; };
 		4C31797D19B646E700081E66 /* FBTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EFE4B6189EBC3100DA6A5D /* FBTweak.m */; };
 		4C31797E19B646E700081E66 /* FBBoolTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C31795D19B5EF7F00081E66 /* FBBoolTweak.m */; };
 		4C31797F19B646E700081E66 /* FBActionTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C31797219B5F2A000081E66 /* FBActionTweak.m */; };
@@ -63,24 +59,28 @@
 		4C31798419B646E700081E66 /* FBTweakCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EFE4BB189EBC4B00DA6A5D /* FBTweakCollection.m */; };
 		4C31798519B646E700081E66 /* FBTweakStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EFE4C0189EBEAD00DA6A5D /* FBTweakStore.m */; };
 		4C31798619B646F000081E66 /* _FBTweakCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EFE4D8189EEED800DA6A5D /* _FBTweakCollectionViewController.m */; };
-		4C31798819B646F000081E66 /* _FBTweakTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C31797A19B6310A00081E66 /* _FBTweakTableViewCell.m */; };
-		4C31798919B646F000081E66 /* _FBTweakTableViewBoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C31797619B630AB00081E66 /* _FBTweakTableViewBoolCell.m */; };
 		4C31799019B647A600081E66 /* FBTweak_SubclassEyesOnly.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C31797019B5F1B100081E66 /* FBTweak_SubclassEyesOnly.h */; };
-		A3767C0219B74FAD00ABAB8C /* _FBTweakTableViewDoubleCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C0019B74FAD00ABAB8C /* _FBTweakTableViewDoubleCell.h */; };
-		A3767C0319B74FAD00ABAB8C /* _FBTweakTableViewDoubleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C0119B74FAD00ABAB8C /* _FBTweakTableViewDoubleCell.m */; };
-		A3767C0619B74FF300ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C0419B74FF300ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A3767C0719B74FF300ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C0519B74FF300ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.m */; };
-		A3767C0A19B8659900ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C0819B8659900ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.h */; };
-		A3767C0B19B8659900ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C0919B8659900ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.m */; };
 		A3767C5319B884F500ABAB8C /* FBTweakEXTMetamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C1A19B884F500ABAB8C /* FBTweakEXTMetamacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A3767C8C19B8882000ABAB8C /* _FBTweakTableViewStringCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C8A19B8882000ABAB8C /* _FBTweakTableViewStringCell.h */; };
-		A3767C8D19B8882000ABAB8C /* _FBTweakTableViewStringCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C8B19B8882000ABAB8C /* _FBTweakTableViewStringCell.m */; };
 		A3767C8F19B89BCE00ABAB8C /* FBTweakMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C8E19B89BCA00ABAB8C /* FBTweakMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3767C9119B89C1800ABAB8C /* FBTweakMacrosInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9019B89C1800ABAB8C /* FBTweakMacrosInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A3767CA219B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9319B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.h */; };
+		A3767CA319B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C9419B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.m */; };
+		A3767CA419B8B3C800ABAB8C /* _FBTweakTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9519B8B3C800ABAB8C /* _FBTweakTableViewCell.h */; };
+		A3767CA519B8B3C800ABAB8C /* _FBTweakTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C9619B8B3C800ABAB8C /* _FBTweakTableViewCell.m */; };
+		A3767CA619B8B3C800ABAB8C /* _FBTweakTableViewCells.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9719B8B3C800ABAB8C /* _FBTweakTableViewCells.h */; };
+		A3767CA719B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9819B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.h */; };
+		A3767CA819B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C9919B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.m */; };
+		A3767CA919B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9A19B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.h */; };
+		A3767CAA19B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C9B19B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.m */; };
+		A3767CAB19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9C19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.h */; };
+		A3767CAC19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C9D19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.m */; };
+		A3767CAD19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9E19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.h */; };
+		A3767CAE19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C9F19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.m */; };
+		A3767CAF19B8B3C800ABAB8C /* _FBTweakTableViewStringCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767CA019B8B3C800ABAB8C /* _FBTweakTableViewStringCell.h */; };
+		A3767CB019B8B3C800ABAB8C /* _FBTweakTableViewStringCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767CA119B8B3C800ABAB8C /* _FBTweakTableViewStringCell.m */; };
+		A3767CB319B8B49200ABAB8C /* _FBTweakTableViewActionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767CB119B8B49200ABAB8C /* _FBTweakTableViewActionCell.h */; };
+		A3767CB419B8B49200ABAB8C /* _FBTweakTableViewActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767CB219B8B49200ABAB8C /* _FBTweakTableViewActionCell.m */; };
 		A3A0F61A19B73A49003E8894 /* FBTweaks.h in Headers */ = {isa = PBXBuildFile; fileRef = A3A0F61919B73A45003E8894 /* FBTweaks.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A3A0F61C19B73AAA003E8894 /* _FBTweakTableViewCells.h in Headers */ = {isa = PBXBuildFile; fileRef = A3A0F61B19B73AAA003E8894 /* _FBTweakTableViewCells.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A3A0F61F19B73C76003E8894 /* _FBTweakTableViewIntegerCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3A0F61D19B73C76003E8894 /* _FBTweakTableViewIntegerCell.h */; };
-		A3A0F62019B73C76003E8894 /* _FBTweakTableViewIntegerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A0F61E19B73C76003E8894 /* _FBTweakTableViewIntegerCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,25 +139,27 @@
 		4C31797019B5F1B100081E66 /* FBTweak_SubclassEyesOnly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBTweak_SubclassEyesOnly.h; sourceTree = "<group>"; };
 		4C31797119B5F2A000081E66 /* FBActionTweak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBActionTweak.h; sourceTree = "<group>"; };
 		4C31797219B5F2A000081E66 /* FBActionTweak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBActionTweak.m; sourceTree = "<group>"; };
-		4C31797519B630AB00081E66 /* _FBTweakTableViewBoolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewBoolCell.h; sourceTree = "<group>"; };
-		4C31797619B630AB00081E66 /* _FBTweakTableViewBoolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewBoolCell.m; sourceTree = "<group>"; };
-		4C31797919B6310A00081E66 /* _FBTweakTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewCell.h; sourceTree = "<group>"; };
-		4C31797A19B6310A00081E66 /* _FBTweakTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewCell.m; sourceTree = "<group>"; };
-		A3767C0019B74FAD00ABAB8C /* _FBTweakTableViewDoubleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewDoubleCell.h; sourceTree = "<group>"; };
-		A3767C0119B74FAD00ABAB8C /* _FBTweakTableViewDoubleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewDoubleCell.m; sourceTree = "<group>"; };
-		A3767C0419B74FF300ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewSelectAmongFewValuesCell.h; sourceTree = "<group>"; };
-		A3767C0519B74FF300ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewSelectAmongFewValuesCell.m; sourceTree = "<group>"; };
-		A3767C0819B8659900ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewSelectAmongManyValuesCell.h; sourceTree = "<group>"; };
-		A3767C0919B8659900ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewSelectAmongManyValuesCell.m; sourceTree = "<group>"; };
 		A3767C1A19B884F500ABAB8C /* FBTweakEXTMetamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakEXTMetamacros.h; sourceTree = "<group>"; };
-		A3767C8A19B8882000ABAB8C /* _FBTweakTableViewStringCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewStringCell.h; sourceTree = "<group>"; };
-		A3767C8B19B8882000ABAB8C /* _FBTweakTableViewStringCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewStringCell.m; sourceTree = "<group>"; };
 		A3767C8E19B89BCA00ABAB8C /* FBTweakMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBTweakMacros.h; sourceTree = "<group>"; };
 		A3767C9019B89C1800ABAB8C /* FBTweakMacrosInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakMacrosInternal.h; sourceTree = "<group>"; };
+		A3767C9319B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewBoolCell.h; sourceTree = "<group>"; };
+		A3767C9419B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewBoolCell.m; sourceTree = "<group>"; };
+		A3767C9519B8B3C800ABAB8C /* _FBTweakTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewCell.h; sourceTree = "<group>"; };
+		A3767C9619B8B3C800ABAB8C /* _FBTweakTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewCell.m; sourceTree = "<group>"; };
+		A3767C9719B8B3C800ABAB8C /* _FBTweakTableViewCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewCells.h; sourceTree = "<group>"; };
+		A3767C9819B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewDoubleCell.h; sourceTree = "<group>"; };
+		A3767C9919B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewDoubleCell.m; sourceTree = "<group>"; };
+		A3767C9A19B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewIntegerCell.h; sourceTree = "<group>"; };
+		A3767C9B19B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewIntegerCell.m; sourceTree = "<group>"; };
+		A3767C9C19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewSelectAmongFewValuesCell.h; sourceTree = "<group>"; };
+		A3767C9D19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewSelectAmongFewValuesCell.m; sourceTree = "<group>"; };
+		A3767C9E19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewSelectAmongManyValuesCell.h; sourceTree = "<group>"; };
+		A3767C9F19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewSelectAmongManyValuesCell.m; sourceTree = "<group>"; };
+		A3767CA019B8B3C800ABAB8C /* _FBTweakTableViewStringCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewStringCell.h; sourceTree = "<group>"; };
+		A3767CA119B8B3C800ABAB8C /* _FBTweakTableViewStringCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewStringCell.m; sourceTree = "<group>"; };
+		A3767CB119B8B49200ABAB8C /* _FBTweakTableViewActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewActionCell.h; sourceTree = "<group>"; };
+		A3767CB219B8B49200ABAB8C /* _FBTweakTableViewActionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewActionCell.m; sourceTree = "<group>"; };
 		A3A0F61919B73A45003E8894 /* FBTweaks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBTweaks.h; sourceTree = "<group>"; };
-		A3A0F61B19B73AAA003E8894 /* _FBTweakTableViewCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewCells.h; sourceTree = "<group>"; };
-		A3A0F61D19B73C76003E8894 /* _FBTweakTableViewIntegerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewIntegerCell.h; sourceTree = "<group>"; };
-		A3A0F61E19B73C76003E8894 /* _FBTweakTableViewIntegerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewIntegerCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,21 +296,7 @@
 				18EFE4D4189EEBC500DA6A5D /* _FBTweakCategoryViewController.m */,
 				18EFE4D7189EEED800DA6A5D /* _FBTweakCollectionViewController.h */,
 				18EFE4D8189EEED800DA6A5D /* _FBTweakCollectionViewController.m */,
-				4C31797919B6310A00081E66 /* _FBTweakTableViewCell.h */,
-				4C31797A19B6310A00081E66 /* _FBTweakTableViewCell.m */,
-				A3A0F61B19B73AAA003E8894 /* _FBTweakTableViewCells.h */,
-				4C31797519B630AB00081E66 /* _FBTweakTableViewBoolCell.h */,
-				4C31797619B630AB00081E66 /* _FBTweakTableViewBoolCell.m */,
-				A3A0F61D19B73C76003E8894 /* _FBTweakTableViewIntegerCell.h */,
-				A3A0F61E19B73C76003E8894 /* _FBTweakTableViewIntegerCell.m */,
-				A3767C0019B74FAD00ABAB8C /* _FBTweakTableViewDoubleCell.h */,
-				A3767C0119B74FAD00ABAB8C /* _FBTweakTableViewDoubleCell.m */,
-				A3767C8A19B8882000ABAB8C /* _FBTweakTableViewStringCell.h */,
-				A3767C8B19B8882000ABAB8C /* _FBTweakTableViewStringCell.m */,
-				A3767C0419B74FF300ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.h */,
-				A3767C0519B74FF300ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.m */,
-				A3767C0819B8659900ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.h */,
-				A3767C0919B8659900ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.m */,
+				A3767C9219B8B3C800ABAB8C /* Cells */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -343,6 +331,30 @@
 			path = extobjc;
 			sourceTree = "<group>";
 		};
+		A3767C9219B8B3C800ABAB8C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A3767C9519B8B3C800ABAB8C /* _FBTweakTableViewCell.h */,
+				A3767C9619B8B3C800ABAB8C /* _FBTweakTableViewCell.m */,
+				A3767C9719B8B3C800ABAB8C /* _FBTweakTableViewCells.h */,
+				A3767C9319B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.h */,
+				A3767C9419B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.m */,
+				A3767C9819B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.h */,
+				A3767C9919B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.m */,
+				A3767C9A19B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.h */,
+				A3767C9B19B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.m */,
+				A3767C9C19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.h */,
+				A3767C9D19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.m */,
+				A3767C9E19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.h */,
+				A3767C9F19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.m */,
+				A3767CA019B8B3C800ABAB8C /* _FBTweakTableViewStringCell.h */,
+				A3767CA119B8B3C800ABAB8C /* _FBTweakTableViewStringCell.m */,
+				A3767CB119B8B49200ABAB8C /* _FBTweakTableViewActionCell.h */,
+				A3767CB219B8B49200ABAB8C /* _FBTweakTableViewActionCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -352,34 +364,35 @@
 			files = (
 				A3767C5319B884F500ABAB8C /* FBTweakEXTMetamacros.h in Headers */,
 				4C31796A19B5EFF500081E66 /* FBDoubleTweak.h in Headers */,
+				A3767CAF19B8B3C800ABAB8C /* _FBTweakTableViewStringCell.h in Headers */,
 				4C31799019B647A600081E66 /* FBTweak_SubclassEyesOnly.h in Headers */,
 				18EFE4B7189EBC3100DA6A5D /* FBTweak.h in Headers */,
+				A3767CA619B8B3C800ABAB8C /* _FBTweakTableViewCells.h in Headers */,
 				18EFE4D5189EEBC500DA6A5D /* _FBTweakCategoryViewController.h in Headers */,
+				A3767CAD19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.h in Headers */,
 				18EFE4D9189EEED800DA6A5D /* _FBTweakCollectionViewController.h in Headers */,
 				18EFE4B4189EBAC200DA6A5D /* FBTweakViewController.h in Headers */,
 				18EFE4C1189EBEAD00DA6A5D /* FBTweakStore.h in Headers */,
 				18EFE4B2189EBAC200DA6A5D /* _FBTweakCompilerMagic.h in Headers */,
-				4C31797719B630AB00081E66 /* _FBTweakTableViewBoolCell.h in Headers */,
 				A3A0F61A19B73A49003E8894 /* FBTweaks.h in Headers */,
 				4C31796219B5EFBF00081E66 /* FBSelectValueTweak.h in Headers */,
+				A3767CA419B8B3C800ABAB8C /* _FBTweakTableViewCell.h in Headers */,
 				18EFE4B3189EBAC200DA6A5D /* FBTweakShakeWindow.h in Headers */,
-				A3A0F61F19B73C76003E8894 /* _FBTweakTableViewIntegerCell.h in Headers */,
 				4C31797319B5F2A000081E66 /* FBActionTweak.h in Headers */,
 				4C31796619B5EFE000081E66 /* FBIntegerTweak.h in Headers */,
-				A3767C8C19B8882000ABAB8C /* _FBTweakTableViewStringCell.h in Headers */,
+				A3767CA719B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.h in Headers */,
+				A3767CA919B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.h in Headers */,
 				18EFE536189F38D500DA6A5D /* FBTweakEnabled.h in Headers */,
-				A3767C0619B74FF300ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.h in Headers */,
 				A3767C9119B89C1800ABAB8C /* FBTweakMacrosInternal.h in Headers */,
-				A3767C0219B74FAD00ABAB8C /* _FBTweakTableViewDoubleCell.h in Headers */,
 				4C31795E19B5EF7F00081E66 /* FBBoolTweak.h in Headers */,
 				A3767C8F19B89BCE00ABAB8C /* FBTweakMacros.h in Headers */,
+				A3767CB319B8B49200ABAB8C /* _FBTweakTableViewActionCell.h in Headers */,
 				18EFE527189F19B300DA6A5D /* FBTweakCategory.h in Headers */,
+				A3767CAB19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.h in Headers */,
 				4C31796E19B5F00600081E66 /* FBStringTweak.h in Headers */,
 				18EFE4BC189EBC4B00DA6A5D /* FBTweakCollection.h in Headers */,
-				A3767C0A19B8659900ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.h in Headers */,
+				A3767CA219B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.h in Headers */,
 				184A94F018D26871005F2774 /* _FBTweakBindObserver.h in Headers */,
-				4C31797B19B6310A00081E66 /* _FBTweakTableViewCell.h in Headers */,
-				A3A0F61C19B73AAA003E8894 /* _FBTweakTableViewCells.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,27 +477,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3767C0B19B8659900ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.m in Sources */,
-				A3767C0719B74FF300ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.m in Sources */,
-				4C31797819B630AB00081E66 /* _FBTweakTableViewBoolCell.m in Sources */,
 				18EFE4A7189EBA9E00DA6A5D /* FBTweakViewController.m in Sources */,
 				4C31796B19B5EFF500081E66 /* FBDoubleTweak.m in Sources */,
-				A3767C8D19B8882000ABAB8C /* _FBTweakTableViewStringCell.m in Sources */,
-				A3767C0319B74FAD00ABAB8C /* _FBTweakTableViewDoubleCell.m in Sources */,
 				18EFE4BD189EBC4B00DA6A5D /* FBTweakCollection.m in Sources */,
 				18EFE4C2189EBEAD00DA6A5D /* FBTweakStore.m in Sources */,
-				4C31797C19B6310A00081E66 /* _FBTweakTableViewCell.m in Sources */,
+				A3767CA819B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.m in Sources */,
 				4C31797419B5F2A000081E66 /* FBActionTweak.m in Sources */,
 				18EFE4AB189EBAAD00DA6A5D /* _FBTweakCompilerMagic.m in Sources */,
 				4C31796F19B5F00600081E66 /* FBStringTweak.m in Sources */,
 				18EFE4B8189EBC3100DA6A5D /* FBTweak.m in Sources */,
 				18EFE528189F19B300DA6A5D /* FBTweakCategory.m in Sources */,
+				A3767CAE19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongManyValuesCell.m in Sources */,
 				4C31796319B5EFBF00081E66 /* FBSelectValueTweak.m in Sources */,
 				18EFE4D6189EEBC500DA6A5D /* _FBTweakCategoryViewController.m in Sources */,
 				4C31795F19B5EF7F00081E66 /* FBBoolTweak.m in Sources */,
+				A3767CAC19B8B3C800ABAB8C /* _FBTweakTableViewSelectAmongFewValuesCell.m in Sources */,
+				A3767CB019B8B3C800ABAB8C /* _FBTweakTableViewStringCell.m in Sources */,
 				18EFE4AF189EBABA00DA6A5D /* FBTweakShakeWindow.m in Sources */,
+				A3767CA319B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.m in Sources */,
+				A3767CA519B8B3C800ABAB8C /* _FBTweakTableViewCell.m in Sources */,
 				18EFE4DA189EEED800DA6A5D /* _FBTweakCollectionViewController.m in Sources */,
-				A3A0F62019B73C76003E8894 /* _FBTweakTableViewIntegerCell.m in Sources */,
+				A3767CB419B8B49200ABAB8C /* _FBTweakTableViewActionCell.m in Sources */,
+				A3767CAA19B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.m in Sources */,
 				184A94F118D26871005F2774 /* _FBTweakBindObserver.m in Sources */,
 				4C31796719B5EFE000081E66 /* FBIntegerTweak.m in Sources */,
 			);
@@ -497,7 +511,6 @@
 				4C31797F19B646E700081E66 /* FBActionTweak.m in Sources */,
 				4C31798219B646E700081E66 /* FBDoubleTweak.m in Sources */,
 				4C31797E19B646E700081E66 /* FBBoolTweak.m in Sources */,
-				4C31798819B646F000081E66 /* _FBTweakTableViewCell.m in Sources */,
 				18EFE52D189F250700DA6A5D /* FBTweakInlineTestsMRR.m in Sources */,
 				18EFE4D2189ECF2000DA6A5D /* FBTweakInlineTestsARC.m in Sources */,
 				4C31798319B646E700081E66 /* FBStringTweak.m in Sources */,
@@ -505,7 +518,6 @@
 				4C31798619B646F000081E66 /* _FBTweakCollectionViewController.m in Sources */,
 				4C31798019B646E700081E66 /* FBSelectValueTweak.m in Sources */,
 				4C31798519B646E700081E66 /* FBTweakStore.m in Sources */,
-				4C31798919B646F000081E66 /* _FBTweakTableViewBoolCell.m in Sources */,
 				4C31797D19B646E700081E66 /* FBTweak.m in Sources */,
 				4C31798119B646E700081E66 /* FBIntegerTweak.m in Sources */,
 			);

@@ -50,8 +50,11 @@
 #define FBTweakValues(category_, collection_, name_, defaultValue_) \
         _FBTweakValues(category_, collection_, name_, defaultValue_)
 
+#undef FBTweakAction
+
 // TODO: Implement
-#define FBTweakAction(...)
+#define FBTweakActions(category_, collection_, name_, action_) \
+        _FBTweakActions(category_, collection_, name_, action_)
 
 // TODO: Implement
 #define FBTweakBind(...)

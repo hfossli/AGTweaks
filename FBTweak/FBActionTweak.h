@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Facebook. All rights reserved.
 //
 
-#import <FBTweak/FBTweak.h>
+#import <Foundation/Foundation.h>
+#import "FBTweak.h"
 
 @interface FBActionTweak : FBTweak
 

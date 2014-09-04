@@ -176,11 +176,6 @@
     return [cellClass neededHeightForTweak:tweak];
 }
 
-- (void)tableView:(UITableView*)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-}
-
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
@@ -227,11 +222,6 @@
     return @"Reset";
 }
 
-- (void)tableView:(UITableView*)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-}
-
 #pragma mark - Utility
 
 - (Class)cellClassForTweak:(FBTweak *)tweak
@@ -251,6 +241,10 @@
     else if([tweak isKindOfClass:[FBStringTweak class]])
     {
         return [_FBTweakTableViewStringCell class];
+    }
+    else if([tweak isKindOfClass:[FBActionTweak class]])
+    {
+        return [_FBTweakTableViewActionCell class];
     }
     else if([tweak isKindOfClass:[FBSelectValueTweak class]])
     {

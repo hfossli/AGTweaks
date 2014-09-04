@@ -2,15 +2,15 @@
 // Created by Agens AS for FBTweak on 03.09.14.
 //
 
-#import "_FBTweakTableViewDoubleCell.h"
+#import "_FBTweakTableViewIntegerCell.h"
 
-@interface _FBTweakTableViewDoubleCell ()
+@interface _FBTweakTableViewIntegerCell ()
 
 @property (nonatomic, strong) UIStepper *stepper;
 
 @end
 
-@implementation _FBTweakTableViewDoubleCell
+@implementation _FBTweakTableViewIntegerCell
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 {
@@ -25,11 +25,9 @@
     }
     return self;
 }
-- (void)setTweak:(FBDoubleTweak *)tweak
+- (void)setTweak:(FBIntegerTweak *)tweak
 {
     [super setTweak:tweak];
-
-    self.textLabel.text = tweak.name;
 
     [self updateTextFieldAndStepper];
 }

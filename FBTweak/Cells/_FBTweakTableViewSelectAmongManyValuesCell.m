@@ -98,8 +98,6 @@
 {
     [super setTweak:tweak];
 
-    self.textLabel.text = tweak.name;
-
     [self.tableView reloadData];
 
     NSIndexPath *selectedRow = [NSIndexPath indexPathForRow:self.tweak.currentIndex inSection:0];

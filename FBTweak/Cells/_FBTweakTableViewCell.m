@@ -57,6 +57,7 @@
 {
     _tweak = tweak;
 
+    self.textLabel.text = tweak.name;
     [self setNeedsLayout];
 }
 
@@ -103,7 +104,11 @@
     CGRect textFieldFrame = self.textField.frame;
     textFieldFrame.origin.x = CGRectGetMaxX(self.textLabel.frame) + 5;
     textFieldFrame.origin.y = 1;
-    textFieldFrame.size.width = self.contentView.bounds.size.width - textFieldFrame.origin.x - 6;
+    textFieldFrame.size.width = self.contentView.bounds.size.width - textFieldFrame.origin.x;
+    if(!self.accessoryView.frame.size.width < 1)
+    {
+        textFieldFrame.size.width -= 10;
+    }
     textFieldFrame.size.height = self.bounds.size.height - textFieldFrame.origin.y;
     self.textField.frame = textFieldFrame;
 }

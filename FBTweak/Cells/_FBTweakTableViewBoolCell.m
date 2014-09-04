@@ -34,7 +34,6 @@
 {
     [super setTweak:tweak];
     
-    self.textLabel.text = tweak.name;
     self.switchControl.on = tweak.currentValue;
 }
 

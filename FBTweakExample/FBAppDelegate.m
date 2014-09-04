@@ -49,9 +49,14 @@
         NSString *string = FBTweakString(@"Category", @"Collection", @"String", @"Dummy");
         NSLog(@"String: %@", string);
     }
+//    {
+//        NSString *string = FBTweakSelectString(@"Category", @"Collection", @"Select", 1, @"Flat", @"Skeumorphic");
+//        NSLog(@"Selected value: %@", string);
+//    }
     {
-        NSString *string = FBTweakSelectString(@"Category", @"Collection", @"Select", 1, @"Flat", @"Skeumorphic");
-        NSLog(@"Selected value: %@", string);
+        FBTweakActions(@"Category", @"Collection", @"Action", ^{
+            NSLog(@"Heisann sveisann!");
+        });
     }
     
     FBBoolTweak *tweak = [[FBBoolTweak alloc] initWithIdentifier:@"com.tweaks.example.advanced"];

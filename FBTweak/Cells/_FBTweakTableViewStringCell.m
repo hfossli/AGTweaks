@@ -23,7 +23,6 @@
 {
     [super setTweak:tweak];
 
-    self.textLabel.text = tweak.name;
     self.textField.text = tweak.currentValue;
 }
 

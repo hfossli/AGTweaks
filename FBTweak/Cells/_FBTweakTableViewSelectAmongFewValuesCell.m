@@ -48,8 +48,6 @@
 {
     [super setTweak:tweak];
 
-    self.textLabel.text = tweak.name;
-
     [self updateSegmentedControl];
 }
 

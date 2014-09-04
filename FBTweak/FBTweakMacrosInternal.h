@@ -133,7 +133,12 @@
     return defaultValue_; \
 })())
 
-#define _FBTweakAction(category_, collection_, name_, defaultValue_)
+#define _FBTweakActions(category_, collection_, name_, action_) (^{ \
+    return _FBTweakInline(category_, collection_, name_, action_, FBActionTweak, ^(FBActionTweak *tweak){ \
+        tweak.action = action_; \
+    }); \
+}())
+
 
 
 

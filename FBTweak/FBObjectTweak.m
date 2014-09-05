@@ -39,8 +39,14 @@
 - (void)load
 {
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:self.identifier];
-    id <NSObject, NSCopying, NSCoding> value = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    _currentValue = value ? value : self.defaultValue;
+    if(data)
+    {
+        _currentValue = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    else
+    {
+        _currentValue = self.defaultValue;
+    }
 }
 
 - (void)save

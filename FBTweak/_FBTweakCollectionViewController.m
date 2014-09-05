@@ -201,6 +201,12 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    FBTweakCollection *collection = self.sortedCollections[indexPath.section];
+    FBTweak *tweak = collection.tweaks[indexPath.row];
+    if([tweak isKindOfClass:[FBActionTweak class]])
+    {
+        return NO;
+    }
     return YES;
 }
 
@@ -237,10 +243,6 @@
     else if([tweak isKindOfClass:[FBDoubleTweak class]])
     {
         return [_FBTweakTableViewDoubleCell class];
-    }
-    else if([tweak isKindOfClass:[FBStringTweak class]])
-    {
-        return [_FBTweakTableViewStringCell class];
     }
     else if([tweak isKindOfClass:[FBObjectTweak class]])
     {

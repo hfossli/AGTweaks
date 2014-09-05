@@ -19,11 +19,12 @@
     return self;
 }
 
-- (void)setTweak:(FBStringTweak *)tweak
+- (void)setTweak:(FBObjectTweak *)tweak
 {
+    NSParameterAssert([tweak.defaultValue isKindOfClass:[NSString class]]);
     [super setTweak:tweak];
 
-    self.textField.text = tweak.currentValue;
+    self.textField.text = (NSString *)tweak.currentValue;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField

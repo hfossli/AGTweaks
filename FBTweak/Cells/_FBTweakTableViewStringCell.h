@@ -3,10 +3,10 @@
 //
 
 #import "_FBTweakTableViewCell.h"
-#import "FBStringTweak.h"
+#import "FBObjectTweak.h"
 
 @interface _FBTweakTableViewStringCell : _FBTweakTableViewCell
 
-@property (nonatomic, strong) FBStringTweak *tweak;
+@property (nonatomic, strong) FBObjectTweak *tweak;
 
 @end

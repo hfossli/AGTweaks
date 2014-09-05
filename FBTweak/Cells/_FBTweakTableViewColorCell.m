@@ -132,6 +132,7 @@
 
 - (void)setTweak:(FBObjectTweak *)tweak
 {
+    NSParameterAssert([tweak.defaultValue isKindOfClass:[UIColor class]]);
     [super setTweak:tweak];
     
     [self updateSliders];

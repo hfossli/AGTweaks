@@ -9,7 +9,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "FBTweakInline.h"
+#import "FBTweakMacros.h"
 
 #if __has_feature(objc_arc)
 #error ARC is disallowed.
@@ -52,8 +52,8 @@
   __attribute__((unused)) BOOL testBool = FBTweakValue(@"BOOL", @"BOOL", @"BOOL", YES);
   XCTAssertEqual(testBool, (BOOL)YES, @"Bool %d", testBool);
 
-  __attribute__((unused)) const char *testString = FBTweakValue(@"String", @"String", @"String", "one");
-  XCTAssertEqual(strcmp(testString, "one"), 0, @"String %s", testString);
+//  __attribute__((unused)) const char *testString = FBTweakValue(@"String", @"String", @"String", "one");
+//  XCTAssertEqual(strcmp(testString, "one"), 0, @"String %s", testString);
 
   __attribute__((unused)) NSString *testNSString = FBTweakValue(@"NSString", @"NSString", @"NSString", @"one");
   XCTAssertEqualObjects(testNSString, @"one", @"NSString %@", testNSString);

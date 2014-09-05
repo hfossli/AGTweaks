@@ -26,6 +26,16 @@ static NSTimeInterval _FBTweakShakeWindowMinTimeInterval = 0.4;
 
 @implementation FBTweakShakeWindow
 
++ (instancetype)activeTweakShakeWindow
+{
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    if([keyWindow isKindOfClass:[FBTweakShakeWindow class]])
+    {
+        return (id)keyWindow;
+    }
+    return nil;
+}
+
 - (void)presentTweaks
 {
     UIViewController *visibleViewController = self.rootViewController;

@@ -14,13 +14,13 @@
 
 // Base
 
-#define _FBTweakInline(category_, collection_, name_, defaultValue_, class_, initBlock_) (^{ \
+#define _FBTweakInline(category_, collection_, name_, defaultValue_, class_, initBlock_) ({\
     /* store the tweak data in the binary at compile time. */ \
     __attribute__((used)) static FBTweakLiteralString category__ = category_; \
     __attribute__((used)) static FBTweakLiteralString collection__ = collection_; \
     __attribute__((used)) static FBTweakLiteralString name__ = name_; \
     __attribute__((used)) static FBTweakLiteralString className__ = @#class_; \
-    __attribute__((used)) static char *encoding__ = (char *)@encode(__typeof__(defaultValue_)); \
+    __attribute__((used)) static char *encoding__ = NULL; \
     __attribute__((used)) static fb_tweak_entry_init_block initBlock__ = initBlock_; \
     __attribute__((used)) __attribute__((section (FBTweakSegmentName "," FBTweakSectionName))) static fb_tweak_entry entry = \
     { &category__, &collection__, &name__, &className__, &encoding__, &initBlock__}; \
@@ -38,8 +38,8 @@
     } \
     NSAssert([__inline_tweak isKindOfClass:[class_ class]], @"You have defined '%@ > %@ > %@' twice, but with different types.", category_, collection_, name_); \
     \
-    return __inline_tweak; \
-}())
+    __inline_tweak; \
+})
 
 
 // Bool
@@ -112,10 +112,21 @@
 #define _FBTweakObject(category_, collection_, name_, defaultValue_) \
     ((__typeof__(defaultValue_))[_FBTweakObjectInline(category_, collection_, name_, defaultValue_) currentValue])
 
+#define _FBTweakBindObject(object_, property_, category_, collection_, name_, defaultValue_) ((^{ \
+    FBObjectTweak *bindTweak_ = _FBTweakObjectInline(category_, collection_, name_, defaultValue_); \
+    object_.property_ = (__typeof__(defaultValue_))[bindTweak_ currentValue]; \
+    FBTweakBindObserver *observer__ = [[FBTweakBindObserver alloc] initWithTweak:bindTweak_ block:^(id object__) { \
+        __typeof__(object_) object___ = object__; \
+        object___.property_ = (__typeof__(defaultValue_))[bindTweak_ currentValue]; \
+    }]; \
+    [observer__ attachToObject:object_]; \
+})())
+
+
 // String
 
 #define _FBTweakStringInline(category_, collection_, name_, defaultValue_) (^{ \
-    return _FBTweakInline(category_, collection_, name_, defaultValue_, FBStringTweak, ^(FBStringTweak *tweak){ \
+    return _FBTweakInline(category_, collection_, name_, defaultValue_, FBObjectTweak, ^(FBObjectTweak *tweak){ \
         tweak.defaultValue = defaultValue_; \
     }); \
 }())
@@ -142,17 +153,35 @@
 
 // Actions
 
-#define _FBTweakAction(category_, collection_, name_, action_) (^{ \
-    return _FBTweakInline(category_, collection_, name_, action_, FBActionTweak, ^(FBActionTweak *tweak){ \
-        tweak.action = action_; \
+#define _FBTweakAction(category_, collection_, name_, ...) ({ \
+    static dispatch_block_t block__ = __VA_ARGS__; \
+    _FBTweakInline(category_, collection_, name_, nil, FBActionTweak, ^(FBActionTweak *tweak){ \
+        tweak.action = block__; \
     }); \
-}())
+})
+
+//#define _FBTweakAction(category_, collection_, name_, ...) \
+//  _FBTweakActionInternal(category_, collection_, name_, __COUNTER__, __VA_ARGS__)
+//#define _FBTweakActionInternal(category_, collection_, name_, suffix_, ...) \
+//  /* store the tweak data in the binary at compile time. */ \
+//  __attribute__((used)) static FBTweakLiteralString __FBTweakConcat(__fb_tweak_action_category_, suffix_) = category_; \
+//  __attribute__((used)) static FBTweakLiteralString __FBTweakConcat(__fb_tweak_action_collection_, suffix_) = collection_; \
+//  __attribute__((used)) static FBTweakLiteralString __FBTweakConcat(__fb_tweak_action_name_, suffix_) = name_; \
+//  __attribute__((used)) static dispatch_block_t __FBTweakConcat(__fb_tweak_action_block_, suffix_) = __VA_ARGS__; \
+//  __attribute__((used)) static char *__FBTweakConcat(__fb_tweak_action_encoding_, suffix_) = (char *)FBTweakEncodingAction; \
+//  __attribute__((used)) __attribute__((section (FBTweakSegmentName "," FBTweakSectionName))) static fb_tweak_entry __FBTweakConcat(__fb_tweak_action_entry_, suffix_) = { \
+//    &__FBTweakConcat(__fb_tweak_action_category_, suffix_), \
+//    &__FBTweakConcat(__fb_tweak_action_collection_, suffix_), \
+//    &__FBTweakConcat(__fb_tweak_action_name_, suffix_), \
+//    &__FBTweakConcat(__fb_tweak_action_block_, suffix_), \
+//    NULL, NULL, \
+//    &__FBTweakConcat(__fb_tweak_action_encoding_, suffix_), \
+//  }; \
 
 // Generic
 
-#define _FBTweakInlineGeneric(category_, collection_, name_, defaultValue_, ...) ((^{ \
-    /* returns a correctly typed tweak object based on tweak value */ \
-    return _Generic(defaultValue_, \
+#define _FBTweakValueInline(category_, collection_, name_, defaultValue_, ...) \
+    _Generic(defaultValue_, \
         \
         /* int */ \
         long: _FBTweakIntegerInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
@@ -173,15 +202,15 @@
         const BOOL: _FBTweakBoolInline(category_, collection_, name_, defaultValue_), \
         \
         default: nil \
-    ); \
-})())
+    )
+
 
 #define _FBTweakValue(category_, collection_, name_, defaultValue_, ...) (^{ \
-    return [_FBTweakInlineGeneric(category_, collection_, name_, defaultValue_, __VA_ARGS__) currentValue]; \
+    return [_FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__) currentValue]; \
 }())
 
-#define _FBTweakBind(object_, property_, category_, collection_, name_, defaultValue_, ...) ((^{ \
-    FBTweak *bindTweak_ = _FBTweakInlineGeneric(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
+#define _FBTweakBindValue(object_, property_, category_, collection_, name_, defaultValue_, ...) ((^{ \
+    FBTweak *bindTweak_ = _FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
     object_.property_ = _FBTweakValue(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
     FBTweakBindObserver *observer__ = [[FBTweakBindObserver alloc] initWithTweak:bindTweak_ block:^(id object__) { \
         __typeof__(object_) object___ = object__; \

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		184A94F018D26871005F2774 /* _FBTweakBindObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 184A94EE18D26871005F2774 /* _FBTweakBindObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		184A94F118D26871005F2774 /* _FBTweakBindObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A94EF18D26871005F2774 /* _FBTweakBindObserver.m */; };
+		184A94F018D26871005F2774 /* FBTweakBindObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 184A94EE18D26871005F2774 /* FBTweakBindObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		184A94F118D26871005F2774 /* FBTweakBindObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A94EF18D26871005F2774 /* FBTweakBindObserver.m */; };
 		18EFE472189EBA4900DA6A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EFE471189EBA4900DA6A5D /* Foundation.framework */; };
 		18EFE480189EBA4900DA6A5D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EFE47F189EBA4900DA6A5D /* XCTest.framework */; };
 		18EFE481189EBA4900DA6A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EFE471189EBA4900DA6A5D /* Foundation.framework */; };
@@ -60,9 +60,9 @@
 		4C31798519B646E700081E66 /* FBTweakStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EFE4C0189EBEAD00DA6A5D /* FBTweakStore.m */; };
 		4C31798619B646F000081E66 /* _FBTweakCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EFE4D8189EEED800DA6A5D /* _FBTweakCollectionViewController.m */; };
 		4C31799019B647A600081E66 /* FBTweak_SubclassEyesOnly.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C31797019B5F1B100081E66 /* FBTweak_SubclassEyesOnly.h */; };
-		A3767C5319B884F500ABAB8C /* FBTweakEXTMetamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C1A19B884F500ABAB8C /* FBTweakEXTMetamacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A3767C5319B884F500ABAB8C /* _FBTweakEXTMetamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C1A19B884F500ABAB8C /* _FBTweakEXTMetamacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3767C8F19B89BCE00ABAB8C /* FBTweakMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C8E19B89BCA00ABAB8C /* FBTweakMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A3767C9119B89C1800ABAB8C /* FBTweakMacrosInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9019B89C1800ABAB8C /* FBTweakMacrosInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A3767C9119B89C1800ABAB8C /* _FBTweakMacrosInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9019B89C1800ABAB8C /* _FBTweakMacrosInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3767CA219B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9319B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.h */; };
 		A3767CA319B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3767C9419B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.m */; };
 		A3767CA419B8B3C800ABAB8C /* _FBTweakTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A3767C9519B8B3C800ABAB8C /* _FBTweakTableViewCell.h */; };
@@ -94,8 +94,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		184A94EE18D26871005F2774 /* _FBTweakBindObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakBindObserver.h; sourceTree = "<group>"; };
-		184A94EF18D26871005F2774 /* _FBTweakBindObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakBindObserver.m; sourceTree = "<group>"; };
+		184A94EE18D26871005F2774 /* FBTweakBindObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakBindObserver.h; sourceTree = "<group>"; };
+		184A94EF18D26871005F2774 /* FBTweakBindObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTweakBindObserver.m; sourceTree = "<group>"; };
 		18EFE46E189EBA4900DA6A5D /* libFBTweak.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFBTweak.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EFE471189EBA4900DA6A5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18EFE475189EBA4900DA6A5D /* FBTweak-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBTweak-Prefix.pch"; sourceTree = "<group>"; };
@@ -139,9 +139,9 @@
 		4C31797019B5F1B100081E66 /* FBTweak_SubclassEyesOnly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBTweak_SubclassEyesOnly.h; sourceTree = "<group>"; };
 		4C31797119B5F2A000081E66 /* FBActionTweak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBActionTweak.h; sourceTree = "<group>"; };
 		4C31797219B5F2A000081E66 /* FBActionTweak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBActionTweak.m; sourceTree = "<group>"; };
-		A3767C1A19B884F500ABAB8C /* FBTweakEXTMetamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakEXTMetamacros.h; sourceTree = "<group>"; };
+		A3767C1A19B884F500ABAB8C /* _FBTweakEXTMetamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakEXTMetamacros.h; sourceTree = "<group>"; };
 		A3767C8E19B89BCA00ABAB8C /* FBTweakMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBTweakMacros.h; sourceTree = "<group>"; };
-		A3767C9019B89C1800ABAB8C /* FBTweakMacrosInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakMacrosInternal.h; sourceTree = "<group>"; };
+		A3767C9019B89C1800ABAB8C /* _FBTweakMacrosInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakMacrosInternal.h; sourceTree = "<group>"; };
 		A3767C9319B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewBoolCell.h; sourceTree = "<group>"; };
 		A3767C9419B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewBoolCell.m; sourceTree = "<group>"; };
 		A3767C9519B8B3C800ABAB8C /* _FBTweakTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewCell.h; sourceTree = "<group>"; };
@@ -305,11 +305,11 @@
 			isa = PBXGroup;
 			children = (
 				A3767C8E19B89BCA00ABAB8C /* FBTweakMacros.h */,
-				A3767C9019B89C1800ABAB8C /* FBTweakMacrosInternal.h */,
+				A3767C9019B89C1800ABAB8C /* _FBTweakMacrosInternal.h */,
 				18EFE4A8189EBAAD00DA6A5D /* _FBTweakCompilerMagic.h */,
 				18EFE4A9189EBAAD00DA6A5D /* _FBTweakCompilerMagic.m */,
-				184A94EE18D26871005F2774 /* _FBTweakBindObserver.h */,
-				184A94EF18D26871005F2774 /* _FBTweakBindObserver.m */,
+				184A94EE18D26871005F2774 /* FBTweakBindObserver.h */,
+				184A94EF18D26871005F2774 /* FBTweakBindObserver.m */,
 			);
 			name = Inline;
 			sourceTree = "<group>";
@@ -325,7 +325,7 @@
 		A3767C1119B884F500ABAB8C /* FBTweakEXT */ = {
 			isa = PBXGroup;
 			children = (
-				A3767C1A19B884F500ABAB8C /* FBTweakEXTMetamacros.h */,
+				A3767C1A19B884F500ABAB8C /* _FBTweakEXTMetamacros.h */,
 			);
 			name = FBTweakEXT;
 			path = extobjc;
@@ -362,7 +362,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3767C5319B884F500ABAB8C /* FBTweakEXTMetamacros.h in Headers */,
+				A3767C5319B884F500ABAB8C /* _FBTweakEXTMetamacros.h in Headers */,
 				4C31796A19B5EFF500081E66 /* FBDoubleTweak.h in Headers */,
 				A3767CAF19B8B3C800ABAB8C /* _FBTweakTableViewStringCell.h in Headers */,
 				4C31799019B647A600081E66 /* FBTweak_SubclassEyesOnly.h in Headers */,
@@ -383,7 +383,7 @@
 				A3767CA719B8B3C800ABAB8C /* _FBTweakTableViewDoubleCell.h in Headers */,
 				A3767CA919B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.h in Headers */,
 				18EFE536189F38D500DA6A5D /* FBTweakEnabled.h in Headers */,
-				A3767C9119B89C1800ABAB8C /* FBTweakMacrosInternal.h in Headers */,
+				A3767C9119B89C1800ABAB8C /* _FBTweakMacrosInternal.h in Headers */,
 				4C31795E19B5EF7F00081E66 /* FBBoolTweak.h in Headers */,
 				A3767C8F19B89BCE00ABAB8C /* FBTweakMacros.h in Headers */,
 				A3767CB319B8B49200ABAB8C /* _FBTweakTableViewActionCell.h in Headers */,
@@ -392,7 +392,7 @@
 				4C31796E19B5F00600081E66 /* FBStringTweak.h in Headers */,
 				18EFE4BC189EBC4B00DA6A5D /* FBTweakCollection.h in Headers */,
 				A3767CA219B8B3C800ABAB8C /* _FBTweakTableViewBoolCell.h in Headers */,
-				184A94F018D26871005F2774 /* _FBTweakBindObserver.h in Headers */,
+				184A94F018D26871005F2774 /* FBTweakBindObserver.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,7 +499,7 @@
 				18EFE4DA189EEED800DA6A5D /* _FBTweakCollectionViewController.m in Sources */,
 				A3767CB419B8B49200ABAB8C /* _FBTweakTableViewActionCell.m in Sources */,
 				A3767CAA19B8B3C800ABAB8C /* _FBTweakTableViewIntegerCell.m in Sources */,
-				184A94F118D26871005F2774 /* _FBTweakBindObserver.m in Sources */,
+				184A94F118D26871005F2774 /* FBTweakBindObserver.m in Sources */,
 				4C31796719B5EFE000081E66 /* FBIntegerTweak.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

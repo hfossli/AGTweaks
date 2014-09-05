@@ -42,7 +42,7 @@
         NSLog(@"Integer: %li", (long)test);
     }
     {
-        NSInteger test = FBTweakValues(@"Category", @"Collection", @"Generic", (NSInteger) 2);
+        NSInteger test = FBTweakValue(@"Category", @"Collection", @"Generic", (NSInteger) 2);
         NSLog(@"Integer: %li", (long)test);
     }
     {
@@ -54,9 +54,12 @@
         NSLog(@"Selected value: %@", string);
     }
     {
-        FBTweakActions(@"Category", @"Collection", @"Action", ^{
+        FBTweakAction(@"Category", @"Collection", @"Action", ^{
             NSLog(@"Heisann sveisann!");
         });
+    }
+    {
+        FBTweakBind(self.window, alpha, @"Window", @"Settings", @"Alpha", 1);
     }
     
     FBBoolTweak *tweak = [[FBBoolTweak alloc] initWithIdentifier:@"com.tweaks.example.advanced"];

@@ -1,6 +1,6 @@
 
-#import <FBTweak/FBTweakMacrosInternal.h>
-#import <FBTweak/FBTweakEXTMetamacros.h>
+#import <FBTweak/_FBTweakMacrosInternal.h>
+#import <FBTweak/_FBTweakEXTMetamacros.h>
 
 #ifndef FBTweakMacros
 #define FBTweakMacros
@@ -47,17 +47,16 @@
         _FBTweakSelectString(category_, collection_, name_, defaultIndex_, __VA_ARGS__)
 
 // TODO: Implement
-#define FBTweakValues(category_, collection_, name_, defaultValue_) \
-        _FBTweakValues(category_, collection_, name_, defaultValue_)
-
-#undef FBTweakAction
+#define FBTweakValue(category_, collection_, name_, defaultValue_, ...) \
+        _FBTweakValue(category_, collection_, name_, defaultValue_, __VA_ARGS__)
 
 // TODO: Implement
-#define FBTweakActions(category_, collection_, name_, action_) \
-        _FBTweakActions(category_, collection_, name_, action_)
+#define FBTweakAction(category_, collection_, name_, action_) \
+        _FBTweakAction(category_, collection_, name_, action_)
 
 // TODO: Implement
-#define FBTweakBind(...)
+#define FBTweakBind(object_, property_, category_, collection_, name_, defaultValue_, ...) \
+        _FBTweakBind(object_, property_, category_, collection_, name_, defaultValue_, __VA_ARGS__)
 
 # endif
 

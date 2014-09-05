@@ -10,37 +10,39 @@
 #import <Foundation/Foundation.h>
 #import "FBTweakEnabled.h"
 
-#if !FB_TWEAK_ENABLED
 
-#else
+#ifndef FBTweakCompilerMagic
+#define FBTweakCompilerMagic
 
-#ifdef __cplusplus
+# if FB_TWEAK_ENABLED
+
+#  ifdef __cplusplus
 extern "C" {
-#endif
+#  endif
 
 #define FBTweakSegmentName "__DATA"
 #define FBTweakSectionName "FBTweak"
-
 #define FBTweakEncodingAction "__ACTION__"
 
-    typedef __unsafe_unretained NSString *FBTweakLiteralString;
+typedef __unsafe_unretained NSString *FBTweakLiteralString;
+typedef __unsafe_unretained void (^fb_tweak_entry_init_block)(id tweak);
 
-    typedef __unsafe_unretained void (^fb_tweak_entry_init_block)(id tweak);
+typedef struct {
+    FBTweakLiteralString *category;
+    FBTweakLiteralString *collection;
+    FBTweakLiteralString *name;
+    FBTweakLiteralString *className;
+    char **encoding;
+    fb_tweak_entry_init_block *initBlock;
+} fb_tweak_entry;
 
-    typedef struct {
-        FBTweakLiteralString *category;
-        FBTweakLiteralString *collection;
-        FBTweakLiteralString *name;
-        FBTweakLiteralString *className;
-        char **encoding;
-        fb_tweak_entry_init_block *initBlock;
-    } fb_tweak_entry;
-
-    extern NSString *_FBTweakIdentifier(fb_tweak_entry *entry);
+extern NSString *_FBTweakIdentifier(fb_tweak_entry *entry);
     
-#ifdef __cplusplus
+#  ifdef __cplusplus
 }
-#endif
+#  endif
+
+# endif
 
 #endif
 

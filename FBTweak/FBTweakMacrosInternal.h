@@ -1,14 +1,12 @@
 
 #import <FBTweak/FBTweakEnabled.h>
 #import <FBTweak/FBTweaks.h>
-#import <FBTweak/FBTweakInline.h>
-#import <FBTweak/FBTweakInlineInternal.h>
 #import <FBTweak/FBTweakEXTMetamacros.h>
 #import <FBTweak/FBTweak.h>
 #import <FBTweak/FBTweakStore.h>
 #import <FBTweak/FBTweakCategory.h>
 #import <FBTweak/FBTweakCollection.h>
-#import <FBTweak/FBTweakCompilerMagic.h>
+#import <FBTweak/_FBTweakCompilerMagic.h>
 
 #ifndef FBTweakMacrosInternal
 #define FBTweakMacrosInternal

@@ -101,6 +101,17 @@
 #define _FBTweakInteger(category_, collection_, name_, defaultValue_, ...)  \
     [_FBTweakIntegerInline(category_, collection_, name_, defaultValue_, __VA_ARGS__) currentValue]
 
+// Object
+
+#define _FBTweakObjectInline(category_, collection_, name_, defaultValue_) (^{ \
+    return _FBTweakInline(category_, collection_, name_, defaultValue_, FBObjectTweak, ^(FBObjectTweak *tweak){ \
+        tweak.defaultValue = defaultValue_; \
+    }); \
+}())
+
+#define _FBTweakObject(category_, collection_, name_, defaultValue_) \
+    ((__typeof__(defaultValue_))[_FBTweakObjectInline(category_, collection_, name_, defaultValue_) currentValue])
+
 // String
 
 #define _FBTweakStringInline(category_, collection_, name_, defaultValue_) (^{ \
@@ -142,18 +153,32 @@
 #define _FBTweakInlineGeneric(category_, collection_, name_, defaultValue_, ...) ((^{ \
     /* returns a correctly typed tweak object based on tweak value */ \
     return _Generic(defaultValue_, \
+        \
+        /* int */ \
         long: _FBTweakIntegerInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
         const long: _FBTweakIntegerInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
         int: _FBTweakIntegerInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
         const int: _FBTweakIntegerInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
+        unsigned int: _FBTweakIntegerInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
+        const unsigned int: _FBTweakIntegerInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
+        \
+        /* double */ \
+        float: _FBTweakDoubleInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
+        const float: _FBTweakDoubleInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
+        double: _FBTweakDoubleInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
+        const double: _FBTweakDoubleInline(category_, collection_, name_, defaultValue_, __VA_ARGS__), \
+        \
+        /* bool */ \
         BOOL: _FBTweakBoolInline(category_, collection_, name_, defaultValue_), \
         const BOOL: _FBTweakBoolInline(category_, collection_, name_, defaultValue_), \
+        \
         default: nil \
     ); \
 })())
 
-#define _FBTweakValue(category_, collection_, name_, defaultValue_, ...) \
-    [_FBTweakInlineGeneric(category_, collection_, name_, defaultValue_, __VA_ARGS__) currentValue]
+#define _FBTweakValue(category_, collection_, name_, defaultValue_, ...) (^{ \
+    return [_FBTweakInlineGeneric(category_, collection_, name_, defaultValue_, __VA_ARGS__) currentValue]; \
+}())
 
 #define _FBTweakBind(object_, property_, category_, collection_, name_, defaultValue_, ...) ((^{ \
     FBTweak *bindTweak_ = _FBTweakInlineGeneric(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
@@ -166,29 +191,6 @@
 })())
 
 #endif
-
-//#define _FBTweakBindWithoutRange(object_, property_, category_, collection_, name_, default_) \
-//((^{ \
-//  FBTweak *__bind_tweak = _FBTweakInlineWithoutRange(category_, collection_, name_, default_); \
-//  _FBTweakBindWithRangeInternal(object_, property_, category_, collection_, name_, default_, __bind_tweak); \
-//})())
-//#define _FBTweakBindWithRange(object_, property_, category_, collection_, name_, default_, min_, max_) \
-//((^{ \
-//  FBTweak *__bind_tweak = _FBTweakInlineWithRange(category_, collection_, name_, default_, min_, max_); \
-//  _FBTweakBindWithRangeInternal(object_, property_, category_, collection_, name_, default_, __bind_tweak); \
-//})())
-//#define _FBTweakBindWithRangeInternal(object_, property_, category_, collection_, name_, default_, tweak_) \
-//((^{ \
-//  object_.property_ = _FBTweakValueInternal(tweak_, category_, collection_, name_, default_); \
-//  FBTweakBindObserver *observer__ = [[FBTweakBindObserver alloc] initWithTweak:tweak_ block:^(id object__) { \
-//    __typeof__(object_) object___ = object__; \
-//    object___.property_ = _FBTweakValueInternal(tweak_, category_, collection_, name_, default_); \
-//  }]; \
-//  [observer__ attachToObject:object_]; \
-//})())
-//#define _FBTweakBind(object_, property_, category_, collection_, name_, ...) _FBTweakHasRange(_FBTweakBindWithoutRange, _FBTweakBindWithRange, __VA_ARGS__)(object_, property_, category_, collection_, name_, __VA_ARGS__)
-//
-//#endif
 
 
 ///**

@@ -242,6 +242,19 @@
     {
         return [_FBTweakTableViewStringCell class];
     }
+    else if([tweak isKindOfClass:[FBObjectTweak class]])
+    {
+        FBObjectTweak *objectTweak = (FBObjectTweak *)tweak;
+        if([objectTweak.defaultValue isKindOfClass:[UIColor class]])
+        {
+            return [_FBTweakTableViewColorCell class];
+        }
+        else if([objectTweak.defaultValue isKindOfClass:[NSString class]])
+        {
+            return [_FBTweakTableViewStringCell class];
+        }
+        return [_FBTweakTableViewUnsupportedCell class];
+    }
     else if([tweak isKindOfClass:[FBActionTweak class]])
     {
         return [_FBTweakTableViewActionCell class];
@@ -264,7 +277,7 @@
     }
     else
     {
-        return [_FBTweakTableViewCell class];
+        return [_FBTweakTableViewUnsupportedCell class];
     }
 }
 

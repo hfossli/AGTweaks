@@ -46,17 +46,17 @@
 #define FBTweakSelectString(category_, collection_, name_, defaultIndex_, ...) \
         _FBTweakSelectString(category_, collection_, name_, defaultIndex_, __VA_ARGS__)
 
-// TODO: Implement
 #define FBTweakValue(category_, collection_, name_, defaultValue_, ...) \
         _FBTweakValue(category_, collection_, name_, defaultValue_, __VA_ARGS__)
 
-// TODO: Implement
 #define FBTweakAction(category_, collection_, name_, action_) \
         _FBTweakAction(category_, collection_, name_, action_)
 
-// TODO: Implement
 #define FBTweakBind(object_, property_, category_, collection_, name_, defaultValue_, ...) \
         _FBTweakBind(object_, property_, category_, collection_, name_, defaultValue_, __VA_ARGS__)
+
+#define FBTweakObject(category_, collection_, name_, defaultValue_) \
+        _FBTweakObject(category_, collection_, name_, defaultValue_)
 
 # endif
 

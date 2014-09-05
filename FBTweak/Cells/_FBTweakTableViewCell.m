@@ -40,10 +40,6 @@
         self.textField.returnKeyType = UIReturnKeyDone;
         self.textField.font = [UIFont systemFontOfSize:14];
         [self.contentView addSubview:self.textField];
-
-//        self.accessoryView.backgroundColor = [UIColor colorWithHue:0.2 saturation:1.0 brightness:1.0 alpha:0.2];
-//        self.contentView.backgroundColor = [UIColor colorWithHue:0.7 saturation:1.0 brightness:1.0 alpha:0.2];
-//        self.textField.backgroundColor = [UIColor colorWithHue:0.5 saturation:1.0 brightness:1.0 alpha:0.2];
     }
     return self;
 }
@@ -95,7 +91,8 @@
     [self.textLabel sizeToFit];
     
     CGRect textLabelFrame = self.textLabel.frame;
-    textLabelFrame.origin.y = floor((self.bounds.size.height - textLabelFrame.size.height) / 2.0);
+    textLabelFrame.size.height = 40;
+    textLabelFrame.origin.y = 6;
     self.textLabel.frame = textLabelFrame;
 }
 
@@ -103,13 +100,13 @@
 {
     CGRect textFieldFrame = self.textField.frame;
     textFieldFrame.origin.x = CGRectGetMaxX(self.textLabel.frame) + 5;
-    textFieldFrame.origin.y = 1;
+    textFieldFrame.origin.y = self.textLabel.frame.origin.y + 2;
     textFieldFrame.size.width = self.contentView.bounds.size.width - textFieldFrame.origin.x;
     if(!self.accessoryView.frame.size.width < 1)
     {
         textFieldFrame.size.width -= 10;
     }
-    textFieldFrame.size.height = self.bounds.size.height - textFieldFrame.origin.y;
+    textFieldFrame.size.height = self.textLabel.frame.size.height;
     self.textField.frame = textFieldFrame;
 }
 

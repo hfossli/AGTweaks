@@ -50,16 +50,25 @@
         NSLog(@"String: %@", string);
     }
     {
+        NSString *string = FBTweakObject(@"Category", @"Collection", @"Object (string)", @"Dummy");
+        NSLog(@"String: %@", string);
+    }
+    {
+        UIColor *color = FBTweakObject(@"Category", @"Collection", @"Object (color)", [UIColor colorWithRed:0.25 green:0.87 blue:1.0 alpha:1.0]);
+        NSLog(@"String: %@", color);
+    }
+    {
         NSString *string = FBTweakSelectString(@"Category", @"Collection", @"Select", 1, @"Flat", @"Skeumorphic");
         NSLog(@"Selected value: %@", string);
     }
     {
         FBTweakAction(@"Category", @"Collection", @"Action", ^{
-            NSLog(@"Heisann sveisann!");
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Action" message:@"Action block triggered" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
         });
     }
     {
-        FBTweakBind(self.window, alpha, @"Window", @"Settings", @"Alpha", 1);
+        FBTweakBind(self.window, alpha, @"Window", @"Settings", @"Alpha", 1.0);
     }
     
     FBBoolTweak *tweak = [[FBBoolTweak alloc] initWithIdentifier:@"com.tweaks.example.advanced"];

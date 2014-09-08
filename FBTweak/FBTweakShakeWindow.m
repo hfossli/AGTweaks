@@ -76,6 +76,8 @@ static NSTimeInterval _FBTweakShakeWindowMinTimeInterval = 0.4;
 # else
     return _shaking && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
 # endif
+#else
+    return NO;
 #endif
 }
 

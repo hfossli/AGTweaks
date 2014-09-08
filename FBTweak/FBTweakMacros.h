@@ -8,11 +8,13 @@
 # if ! FB_TWEAK_ENABLED
 
 #define FBTweakSelectString(category_, collection_, name_, defaultIndex_, ...)  metamacro_at(defaultIndex_, __VA_ARGS__)
-#define FBTweakValue(category_, collection_, name_, defaultValue_, ...) defaultValue_
 #define FBTweakAction(...)
-#define FBTweakBindValue(object_, property_, category_, collection_, name_, defaultValue_, ...) defaultValue_
+#define FBTweakValue(category_, collection_, name_, defaultValue_, ...) defaultValue_
+#define FBTweakValueInline(category_, collection_, name_, defaultValue_, ...) nil
+#define FBTweakBindValue(object_, property_, category_, collection_, name_, defaultValue_, ...) object_.property_ = defaultValue_
 #define FBTweakObject(category_, collection_, name_, defaultObject_) defaultObject_
-#define FBTweakBindObject(object_, property_, category_, collection_, name_, defaultObject_) defaultObject_
+#define FBTweakObjectInline(category_, collection_, name_, defaultValue_) nil
+#define FBTweakBindObject(object_, property_, category_, collection_, name_, defaultObject_) object_.property_ = defaultObject_
 
 # else
 
@@ -45,6 +47,15 @@
         _FBTweakSelectString(category_, collection_, name_, defaultIndex_, __VA_ARGS__)
 
 /**
+ @abstract Performs an action on tweak selection.
+ @param ... The last parameter is a block containing the action to run.
+ @discussion The action does not have access to local state. It might be necessary to
+ access global state in the block to perform actions scoped to a specific class.
+ */
+#define FBTweakAction(category_, collection_, name_, ...) \
+        _FBTweakAction(category_, collection_, name_, __VA_ARGS__)
+
+/**
  @abstract Loads the value of a tweak inline.
  @discussion To use a tweak, use this instead of the constant value you otherwise would.
  To use the same tweak in two places, define a C function that returns FBTweakValue.
@@ -63,16 +74,6 @@
 
 #define FBTweakValueInline(category_, collection_, name_, defaultValue_, ...) \
         _FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__)
-
-/**
- @abstract Performs an action on tweak selection.
- @param ... The last parameter is a block containing the action to run.
- @discussion The action does not have access to local state. It might be necessary to
- access global state in the block to perform actions scoped to a specific class.
- */
-#define FBTweakAction(category_, collection_, name_, ...) \
-        _FBTweakAction(category_, collection_, name_, __VA_ARGS__)
-
 /**
  @abstract Binds an object property to a tweak.
  @param object_ The object to bind to.

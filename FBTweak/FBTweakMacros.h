@@ -1,11 +1,20 @@
 
-#import <FBTweak/FBTweakMacrosInternal.h>
-#import <FBTweak/FBTweakEXTMetamacros.h>
+#import <FBTweak/_FBTweakMacrosInternal.h>
+#import <FBTweak/_FBTweakEXTMetamacros.h>
 
 #ifndef FBTweakMacros
 #define FBTweakMacros
 
 # if ! FB_TWEAK_ENABLED
+
+#define FBTweakSelectString(category_, collection_, name_, defaultIndex_, ...)  metamacro_at(defaultIndex_, __VA_ARGS__)
+#define FBTweakValue(category_, collection_, name_, defaultValue_, ...) defaultValue_
+#define FBTweakAction(...)
+#define FBTweakBindValue(object_, property_, category_, collection_, name_, defaultValue_, ...) defaultValue_
+#define FBTweakObject(category_, collection_, name_, defaultObject_) defaultObject_
+#define FBTweakBindObject(object_, property_, category_, collection_, name_, defaultObject_) defaultObject_
+
+# else
 
 /**
  @abstract Common parameters in these macros.
@@ -20,44 +29,79 @@
  @param max_ Optional, for numbers. The maximum value. Same restrictions as default.
  */
 
-#define FBTweakBool(category_, collection_, name_, defaultValue_) defaultValue_
-#define FBTweakDouble(category_, collection_, name_, defaultValue_, ...) defaultValue_
-#define FBTweakInteger(category_, collection_, name_, defaultValue_, ...) defaultValue_
-#define FBTweakString(category_, collection_, name_, defaultValue_) defaultValue_
-#define FBTweakSelectString(category_, collection_, name_, defaultIndex_, ...)  metamacro_at(defaultIndex_, __VA_ARGS__)
-#define FBTweakValues(category_, collection_, name_, defaultValue_, ...) defaultValue_
-#define FBTweakAction(...)
-#define FBTweakBind(...)
-
-# else
-
-#define FBTweakBool(category_, collection_, name_, defaultValue_) \
-        _FBTweakBool(category_, collection_, name_, defaultValue_)
-
-#define FBTweakDouble(category_, collection_, name_, defaultValue_, ...) \
-        _FBTweakDouble(category_, collection_, name_, defaultValue_, __VA_ARGS__)
-
-#define FBTweakInteger(category_, collection_, name_, defaultValue_, ...) \
-        _FBTweakInteger(category_, collection_, name_, defaultValue_, __VA_ARGS__)
-
-#define FBTweakString(category_, collection_, name_, defaultValue_) \
-        _FBTweakString(category_, collection_, name_, defaultValue_) 
-
+/**
+ @abstract Loads the value of a tweak inline.
+ @param defaultIndex_
+ @param ... A comma separated list of all the strings you want to choose between
+ @discussion To use a tweak, use this instead of the constant value you otherwise would.
+ To use the same tweak in two places, define a C function that returns FBTweakValue.
+ @return One of the strings passed
+ 
+    NSString *string = FBTweakSelectString(@"Category", @"Collection", @"Name", 1, @"Skeumorphic", @"Flat");
+    NSLog(@"Selected value: %@", string); // Defaults to "Flat"
+ 
+ */
 #define FBTweakSelectString(category_, collection_, name_, defaultIndex_, ...) \
         _FBTweakSelectString(category_, collection_, name_, defaultIndex_, __VA_ARGS__)
 
-// TODO: Implement
-#define FBTweakValues(category_, collection_, name_, defaultValue_) \
-        _FBTweakValues(category_, collection_, name_, defaultValue_)
+/**
+ @abstract Loads the value of a tweak inline.
+ @discussion To use a tweak, use this instead of the constant value you otherwise would.
+ To use the same tweak in two places, define a C function that returns FBTweakValue.
+ @return The current value of the tweak, or the default value if none is set.
+ 
+    You can optionally add 2 more parameters specifying a 'minimumValue' and a 'maximumValue'
+    <type> var = FBTweakSelectString(@"Category", @"Collection", @"Name", <defaultValue>);
+    <type> var = FBTweakSelectString(@"Category", @"Collection", @"Name", <defaultValue>, <minimumValue>, <maximumValue>);
+ 
+    BOOL showUnicorns = FBTweakSelectString(@"Category", @"Collection", @"Enable unicorns", YES);
+    NSInteger unicorns = FBTweakSelectString(@"Category", @"Collection", @"Number of unicorns", 10, 1, 100);
+    double size = FBTweakSelectString(@"Category", @"Collection", @"Size of unicorns", 19.0, 10.0, 1000.0);
+ */
+#define FBTweakValue(category_, collection_, name_, default_, ...) \
+        _FBTweakValue(category_, collection_, name_, default_, __VA_ARGS__)
 
-#undef FBTweakAction
+#define FBTweakValueInline(category_, collection_, name_, defaultValue_, ...) \
+        _FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__)
 
-// TODO: Implement
-#define FBTweakActions(category_, collection_, name_, action_) \
-        _FBTweakActions(category_, collection_, name_, action_)
+/**
+ @abstract Performs an action on tweak selection.
+ @param ... The last parameter is a block containing the action to run.
+ @discussion The action does not have access to local state. It might be necessary to
+ access global state in the block to perform actions scoped to a specific class.
+ */
+#define FBTweakAction(category_, collection_, name_, ...) \
+        _FBTweakAction(category_, collection_, name_, __VA_ARGS__)
 
-// TODO: Implement
-#define FBTweakBind(...)
+/**
+ @abstract Binds an object property to a tweak.
+ @param object_ The object to bind to.
+ @param property_ The property to bind.
+ @discussion As long as the object is alive, the property will be updated to match the tweak.
+ */
+#define FBTweakBindValue(object_, property_, category_, collection_, name_, default_, ...) \
+        _FBTweakBindValue(object_, property_, category_, collection_, name_, default_, __VA_ARGS__)
+
+/**
+ @abstract Loads the value of a tweak inline.
+ @discussion To use a tweak, use this instead of the constant value you otherwise would.
+ To use the same tweak in two places, define a C function that returns FBTweakValue.
+ @return The current value of the tweak, or the default value if none is set.
+ */
+#define FBTweakObject(category_, collection_, name_, default_) \
+        _FBTweakObject(category_, collection_, name_, default_)
+
+#define FBTweakObjectInline(category_, collection_, name_, defaultValue_) \
+        _FBTweakObjectInline(category_, collection_, name_, defaultValue_)
+
+/**
+ @abstract Binds an object property to a tweak.
+ @param object_ The object to bind to.
+ @param property_ The property to bind.
+ @discussion As long as the object is alive, the property will be updated to match the tweak.
+ */
+#define FBTweakBindObject(object_, property_, category_, collection_, name_, default_) \
+        _FBTweakBindObject(object_, property_, category_, collection_, name_, default_)
 
 # endif
 

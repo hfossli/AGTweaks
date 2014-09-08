@@ -17,4 +17,7 @@
  */
 @interface FBTweakShakeWindow : UIWindow <FBTweakViewControllerDelegate>
 
++ (instancetype)activeTweakShakeWindow;
+- (void)presentTweaks;
+
 @end

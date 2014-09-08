@@ -201,6 +201,12 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    FBTweakCollection *collection = self.sortedCollections[indexPath.section];
+    FBTweak *tweak = collection.tweaks[indexPath.row];
+    if([tweak isKindOfClass:[FBActionTweak class]])
+    {
+        return NO;
+    }
     return YES;
 }
 
@@ -238,9 +244,18 @@
     {
         return [_FBTweakTableViewDoubleCell class];
     }
-    else if([tweak isKindOfClass:[FBStringTweak class]])
+    else if([tweak isKindOfClass:[FBObjectTweak class]])
     {
-        return [_FBTweakTableViewStringCell class];
+        FBObjectTweak *objectTweak = (FBObjectTweak *)tweak;
+        if([objectTweak.defaultValue isKindOfClass:[UIColor class]])
+        {
+            return [_FBTweakTableViewColorCell class];
+        }
+        else if([objectTweak.defaultValue isKindOfClass:[NSString class]])
+        {
+            return [_FBTweakTableViewStringCell class];
+        }
+        return [_FBTweakTableViewUnsupportedCell class];
     }
     else if([tweak isKindOfClass:[FBActionTweak class]])
     {
@@ -264,7 +279,7 @@
     }
     else
     {
-        return [_FBTweakTableViewCell class];
+        return [_FBTweakTableViewUnsupportedCell class];
     }
 }
 

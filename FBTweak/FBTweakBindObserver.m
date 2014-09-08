@@ -10,19 +10,19 @@
 #import <objc/runtime.h>
 
 #import "FBTweak.h"
-#import "_FBTweakBindObserver.h"
+#import "FBTweakBindObserver.h"
 
-@interface _FBTweakBindObserver () <FBTweakObserver>
+@interface FBTweakBindObserver () <FBTweakObserver>
 
 @property (nonatomic, strong) FBTweak *tweak;
-@property (nonatomic, strong) _FBTweakBindObserverBlock block;
+@property (nonatomic, strong) FBTweakBindObserverBlock block;
 @property (nonatomic, weak) id object;
 
 @end
 
-@implementation _FBTweakBindObserver
+@implementation FBTweakBindObserver
 
-- (instancetype)initWithTweak:(FBTweak *)tweak block:(_FBTweakBindObserverBlock)block
+- (instancetype)initWithTweak:(FBTweak *)tweak block:(FBTweakBindObserverBlock)block
 {
     self = [super init];
     if(self)

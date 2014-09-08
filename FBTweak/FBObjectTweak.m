@@ -1,15 +1,15 @@
 //
-//  FBStringTweak.m
+//  FBGenericTweak.m
 //  FBTweak
 //
-//  Created by Maria Fossli on 02.09.14.
+//  Created by Maria Fossli on 05.09.14.
 //  Copyright (c) 2014 Facebook. All rights reserved.
 //
 
-#import "FBStringTweak.h"
+#import "FBObjectTweak.h"
 #import "FBTweak_SubclassEyesOnly.h"
 
-@implementation FBStringTweak
+@implementation FBObjectTweak
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
@@ -38,13 +38,21 @@
 
 - (void)load
 {
-    NSString *value = [[NSUserDefaults standardUserDefaults] objectForKey:self.identifier];
-    _currentValue = value ? value : self.defaultValue;
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:self.identifier];
+    if(data)
+    {
+        _currentValue = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    else
+    {
+        _currentValue = self.defaultValue;
+    }
 }
 
 - (void)save
 {
-    [[NSUserDefaults standardUserDefaults] setObject:self.currentValue forKey:self.identifier];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.currentValue];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:self.identifier];
 }
 
 - (void)reset

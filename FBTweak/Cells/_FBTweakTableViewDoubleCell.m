@@ -29,13 +29,40 @@
 {
     [super setTweak:tweak];
 
+    self.stepper.value = tweak.currentValue;
+
+    if(tweak.minimumValue == tweak.maximumValue)
+    {
+        self.stepper.minimumValue = DBL_MIN;
+        self.stepper.maximumValue = DBL_MAX;
+        self.stepper.stepValue = MAX(0.01, fabs(tweak.currentValue * 0.01));
+    }
+    else
+    {
+        self.stepper.minimumValue = tweak.minimumValue;
+        self.stepper.maximumValue = tweak.maximumValue;
+        self.stepper.stepValue = fabs((tweak.maximumValue - tweak.minimumValue) * 0.01);
+    }
+
     [self updateTextFieldAndStepper];
+}
+
+- (NSUInteger)numberOfDecimalsToDisplay
+{
+    NSString *decimals = [[[@(self.stepper.stepValue) stringValue] componentsSeparatedByString:@"."] lastObject];
+    NSRange leadingZeroRange = [decimals rangeOfString:@"^0+" options:NSRegularExpressionSearch];
+    if(leadingZeroRange.length > 0)
+    {
+        return leadingZeroRange.length + 2;
+    }
+    return 1;
 }
 
 - (void)updateTextFieldAndStepper
 {
     self.stepper.value = self.tweak.currentValue;
-    self.textField.text = [NSString stringWithFormat:@"%li", (long)self.tweak.currentValue];
+    NSString *formatString = [NSString stringWithFormat:@"%@.%luf", @"%", (unsigned long)[self numberOfDecimalsToDisplay]];
+    self.textField.text = [NSString stringWithFormat:formatString, self.tweak.currentValue];
 }
 
 - (void)stepperChanged:(UIStepper *)sender

@@ -29,6 +29,21 @@
 {
     [super setTweak:tweak];
 
+    self.stepper.value = tweak.currentValue;
+
+    if(tweak.minimumValue == tweak.maximumValue && tweak.minimumValue == 0)
+    {
+        self.stepper.minimumValue = DBL_MIN;
+        self.stepper.maximumValue = DBL_MAX;
+        self.stepper.stepValue = MAX(1.0, fabs(tweak.currentValue / 100.0));
+    }
+    else
+    {
+        self.stepper.minimumValue = tweak.minimumValue;
+        self.stepper.maximumValue = tweak.maximumValue;
+        self.stepper.stepValue = MAX(1.0, (tweak.maximumValue - tweak.minimumValue) / 100.0);
+    }
+
     [self updateTextFieldAndStepper];
 }
 

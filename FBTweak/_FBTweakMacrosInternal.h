@@ -88,7 +88,7 @@
 }())
 
 #define _FBTweakDoubleWithRange(category_, collection_, name_, defaultValue_, minimumValue_, maximumValue_) (^{ \
-    return _FBTweakInline(category_, collection_, name_, defaultValue_, FBDoubleTweak, ^(FBIntegerTweak *tweak){ \
+    return _FBTweakInline(category_, collection_, name_, defaultValue_, FBDoubleTweak, ^(FBDoubleTweak *tweak){ \
         tweak.defaultValue = defaultValue_; \
         tweak.minimumValue = minimumValue_; \
         tweak.maximumValue = maximumValue_; \

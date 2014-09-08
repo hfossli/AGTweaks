@@ -8,7 +8,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "FBTweak.h"
+#import <FBTweak/FBTweak.h>
 
 @interface FBActionTweak : FBTweak
 

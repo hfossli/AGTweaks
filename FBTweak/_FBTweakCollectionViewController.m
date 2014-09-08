@@ -7,11 +7,11 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "FBTweakCollection.h"
-#import "FBTweakCategory.h"
-#import "_FBTweakCollectionViewController.h"
-#import "FBTweaks.h"
-#import "_FBTweakTableViewCells.h"
+#import <FBTweak/FBTweakCollection.h>
+#import <FBTweak/FBTweakCategory.h>
+#import <FBTweak/_FBTweakCollectionViewController.h>
+#import <FBTweak/FBTweaks.h>
+#import <FBTweak/_FBTweakTableViewCells.h>
 
 @interface _FBTweakCollectionViewController () <UITableViewDelegate, UITableViewDataSource>
 

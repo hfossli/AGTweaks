@@ -7,7 +7,7 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "FBTweakMacros.h"
+#import <FBTweak/FBTweakMacros.h>
 
 #import <FBTweak/FBTweakShakeWindow.h>
 #import <FBTweak/FBTweakViewController.h>

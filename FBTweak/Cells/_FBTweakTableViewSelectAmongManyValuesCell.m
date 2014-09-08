@@ -7,7 +7,7 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "_FBTweakTableViewSelectAmongManyValuesCell.h"
+#import <FBTweak/_FBTweakTableViewSelectAmongManyValuesCell.h>
 
 #define _FBBlueColor [UIColor colorWithRed:22.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]
 

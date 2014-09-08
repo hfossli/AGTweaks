@@ -8,7 +8,7 @@
  */
 
 #import "FBObjectTweak.h"
-#import "FBTweak_SubclassEyesOnly.h"
+#import <FBTweak/FBTweak_SubclassEyesOnly.h>
 
 @implementation FBObjectTweak
 

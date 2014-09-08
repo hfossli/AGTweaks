@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FBTweakViewController.h"
+#import <FBTweak/FBTweakViewController.h>
 
 /**
   @abstract A UIWindow that automatically presents tweaks when the user shakes the device.

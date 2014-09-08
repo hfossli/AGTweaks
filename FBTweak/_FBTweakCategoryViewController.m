@@ -7,9 +7,9 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "FBTweakStore.h"
-#import "FBTweakCategory.h"
-#import "_FBTweakCategoryViewController.h"
+#import <FBTweak/FBTweakStore.h>
+#import <FBTweak/FBTweakCategory.h>
+#import <FBTweak/_FBTweakCategoryViewController.h>
 #import <MessageUI/MessageUI.h>
 
 @interface _FBTweakCategoryViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>

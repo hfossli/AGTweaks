@@ -7,10 +7,10 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "FBTweakStore.h"
-#import "FBTweakViewController.h"
-#import "_FBTweakCategoryViewController.h"
-#import "_FBTweakCollectionViewController.h"
+#import <FBTweak/FBTweakStore.h>
+#import <FBTweak/FBTweakViewController.h>
+#import <FBTweak/_FBTweakCategoryViewController.h>
+#import <FBTweak/_FBTweakCollectionViewController.h>
 
 NSString *const FBTweakShakeViewControllerDidDismissNotification = @"FBTweakShakeViewControllerDidDismissNotification";
 

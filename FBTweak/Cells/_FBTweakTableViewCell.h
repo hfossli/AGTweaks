@@ -8,7 +8,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "FBTweak.h"
+#import <FBTweak/FBTweak.h>
 
 /*
  Responsibility:

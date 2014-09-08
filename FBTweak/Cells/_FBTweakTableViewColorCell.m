@@ -7,7 +7,7 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "_FBTweakTableViewColorCell.h"
+#import <FBTweak/_FBTweakTableViewColorCell.h>
 
 @interface _FBLabeledSlider : UISlider
 

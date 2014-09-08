@@ -10,7 +10,7 @@
 #import <FBTweak/FBTweakEnabled.h>
 #import <FBTweak/FBTweaks.h>
 #import <FBTweak/FBTweak.h>
-#import <FBTweak/FBTweakBindObserver.h>
+#import <FBTweak/_FBTweakBindObserver.h>
 #import <FBTweak/FBTweakStore.h>
 #import <FBTweak/FBTweakCategory.h>
 #import <FBTweak/FBTweakCollection.h>
@@ -149,7 +149,7 @@
 #define _FBTweakBindObject(object_, property_, category_, collection_, name_, defaultValue_) ((^{ \
     FBObjectTweak *bindTweak_ = _FBTweakObjectInline(category_, collection_, name_, defaultValue_); \
     object_.property_ = (__typeof__(defaultValue_))[bindTweak_ currentValue]; \
-    FBTweakBindObserver *observer__ = [[FBTweakBindObserver alloc] initWithTweak:bindTweak_ block:^(id object__) { \
+    _FBTweakBindObserver *observer__ = [[_FBTweakBindObserver alloc] initWithTweak:bindTweak_ block:^(id object__) { \
         __typeof__(object_) object___ = object__; \
         object___.property_ = (__typeof__(defaultValue_))[bindTweak_ currentValue]; \
     }]; \
@@ -220,7 +220,7 @@
 #define _FBTweakBindValue(object_, property_, category_, collection_, name_, defaultValue_, ...) ((^{ \
     FBTweak *bindTweak_ = _FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
     object_.property_ = _FBTweakValue(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
-    FBTweakBindObserver *observer__ = [[FBTweakBindObserver alloc] initWithTweak:bindTweak_ block:^(id object__) { \
+    _FBTweakBindObserver *observer__ = [[_FBTweakBindObserver alloc] initWithTweak:bindTweak_ block:^(id object__) { \
         __typeof__(object_) object___ = object__; \
         object___.property_ = _FBTweakValue(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
     }]; \
@@ -387,7 +387,7 @@
 //#define _FBTweakBindWithRangeInternal(object_, property_, category_, collection_, name_, default_, tweak_) \
 //((^{ \
 //  object_.property_ = _FBTweakValueInternal(tweak_, category_, collection_, name_, default_); \
-//  FBTweakBindObserver *observer__ = [[FBTweakBindObserver alloc] initWithTweak:tweak_ block:^(id object__) { \
+//  _FBTweakBindObserver *observer__ = [[_FBTweakBindObserver alloc] initWithTweak:tweak_ block:^(id object__) { \
 //    __typeof__(object_) object___ = object__; \
 //    object___.property_ = _FBTweakValueInternal(tweak_, category_, collection_, name_, default_); \
 //  }]; \

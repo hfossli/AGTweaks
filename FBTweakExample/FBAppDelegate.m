@@ -69,7 +69,7 @@ FBTweakAction(@"Actions", @"Global", @"Two", ^{
     }
     {
         UIColor *color = FBTweakObject(@"Category", @"Collection", @"Color", [UIColor colorWithRed:0.25 green:0.87 blue:1.0 alpha:1.0]);
-        NSLog(@"COlor: %@", color);
+        NSLog(@"Color: %@", color);
     }
     {
         NSString *string = FBTweakSelectString(@"Category", @"Collection", @"Select", 1, @"Flat", @"Skeumorphic");

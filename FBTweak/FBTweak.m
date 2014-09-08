@@ -55,9 +55,12 @@
     [coder encodeObject:self.name forKey:@"name"];
 }
 
-- (void)tweakChanged
+- (void)tweakChanged:(FBTweakChangeReason)reason
 {
-    [self save];
+    if(reason == FBTweakChangeReasonEdit)
+    {
+        [self save];
+    }
     
     for (id <FBTweakObserver> observer in [_observers setRepresentation])
     {

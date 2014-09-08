@@ -9,6 +9,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_OPTIONS(NSUInteger, FBTweakChangeReason) {
+    FBTweakChangeReasonUnknown,
+    FBTweakChangeReasonEdit,
+    FBTweakChangeReasonReset,
+};
+
 @protocol FBTweakObserver;
 
 /**

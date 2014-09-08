@@ -12,7 +12,7 @@
 @interface FBTweak (SubclassEyesOnly)
 
 /// Subclasses should call super whenever anything changes
-- (void)tweakChanged;
+- (void)tweakChanged:(FBTweakChangeReason)reason;
 
 /// Subclasses should override to save whenever super decides is a good time
 - (void)save;

@@ -32,8 +32,13 @@
 
 - (void)setCurrentValue:(id)currentValue
 {
+    [self setCurrentValue:currentValue reason:FBTweakChangeReasonEdit];
+}
+
+- (void)setCurrentValue:(id)currentValue reason:(FBTweakChangeReason)reason
+{
     _currentValue = currentValue;
-    [self tweakChanged];
+    [self tweakChanged:reason];
 }
 
 - (void)load
@@ -58,7 +63,7 @@
 - (void)reset
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:self.identifier];
-    _currentValue = self.defaultValue;
+    [self setCurrentValue:self.defaultValue reason:FBTweakChangeReasonReset];
 }
 
 @end

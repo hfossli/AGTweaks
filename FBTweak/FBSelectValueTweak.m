@@ -35,12 +35,17 @@
 
 - (void)setCurrentIndex:(NSUInteger)currentIndex
 {
+    [self setCurrentIndex:currentIndex reason:FBTweakChangeReasonEdit];
+}
+
+- (void)setCurrentIndex:(NSUInteger)currentIndex reason:(FBTweakChangeReason)reason
+{
     if(self.strings.count < currentIndex + 1)
     {
         currentIndex = MAX(self.strings.count, 1) - 1;
     }
     _currentIndex = currentIndex;
-    [self tweakChanged];
+    [self tweakChanged:reason];
 }
 
 - (NSString *)currentValue
@@ -66,7 +71,7 @@
 - (void)reset
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:self.identifier];
-    _currentIndex = self.defaultIndex;
+    [self setCurrentIndex:self.defaultIndex reason:FBTweakChangeReasonReset];
 }
 
 @end

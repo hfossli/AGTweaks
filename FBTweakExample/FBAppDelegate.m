@@ -7,117 +7,111 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <FBTweak/FBTweak.h>
-#import <FBTweak/FBTweakShakeWindow.h>
-#import <FBTweak/FBTweakInline.h>
-#import <FBTweak/FBTweakViewController.h>
-
 #import "FBAppDelegate.h"
+#import <FBTweak/Tweaks.h>
+#import "FBTweakDemoController.h"
 
 @interface FBAppDelegate () <FBTweakObserver, FBTweakViewControllerDelegate>
+
 @end
 
-@implementation FBAppDelegate {
-  UIWindow *_window;
-  UIViewController *_rootViewController;
-  
-  UILabel *_label;
-  FBTweak *_flipTweak;
-}
+@implementation FBAppDelegate
 
-FBTweakAction(@"Actions", @"Global", @"Hello", ^{
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Global alert test." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
-  [alert show];
-});
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[FBTweakShakeWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    self.window.rootViewController = [[FBTweakDemoController alloc] init];
     
-  FBTweakAction(@"Actions", @"Scoped", @"One", ^{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Scoped alert test #1." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
-    [alert show];
-  });
-
-  _window = [[FBTweakShakeWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  _window.backgroundColor = [UIColor whiteColor];
-  [_window makeKeyAndVisible];
-
-  _rootViewController = [[UIViewController alloc] init];
-  _rootViewController.view.backgroundColor = [UIColor colorWithRed:FBTweakValue(@"Window", @"Color", @"Red", 0.9, 0.0, 1.0)
-                                                        green:FBTweakValue(@"Window", @"Color", @"Green", 0.9, 0.0, 1.0)
-                                                         blue:FBTweakValue(@"Window", @"Color", @"Blue", 0.9, 0.0, 1.0)
-                                                        alpha:1.0];
-  _window.rootViewController = _rootViewController;
-  
-  _label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _window.bounds.size.width, _window.bounds.size.height * 0.75)];
-  _label.textAlignment = NSTextAlignmentCenter;
-  _label.numberOfLines = 0;
-  _label.userInteractionEnabled = YES;
-  _label.backgroundColor = [UIColor clearColor];
-  _label.textColor = [UIColor blackColor];
-  _label.font = [UIFont systemFontOfSize:FBTweakValue(@"Content", @"Text", @"Size", 60.0)];
-  FBTweakBind(_label, text, @"Content", @"Text", @"String", @"Tweaks");
-  FBTweakBind(_label, alpha, @"Content", @"Text", @"Alpha", 0.5, 0.0, 1.0);
-  [_rootViewController.view addSubview:_label];
-  
-  UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTapped)];
-  [_label addGestureRecognizer:tapRecognizer];
-  
-  _flipTweak = FBTweakInline(@"Window", @"Effects", @"Upside Down", NO);
-  [_flipTweak addObserver:self];
-
-  CGRect tweaksButtonFrame = _window.bounds;
-  tweaksButtonFrame.origin.y = _label.bounds.size.height;
-  tweaksButtonFrame.size.height = tweaksButtonFrame.size.height - _label.bounds.size.height;
-  UIButton *tweaksButton = [[UIButton alloc] initWithFrame:tweaksButtonFrame];
-  [tweaksButton setTitle:@"Show Tweaks" forState:UIControlStateNormal];
-  [tweaksButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-  [tweaksButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
-  [_rootViewController.view addSubview:tweaksButton];
+    [self someBasicInlineExamples];
+    [self explicitExample];
     
-  FBTweak *animationDurationTweak = FBTweakInline(@"Content", @"Animation", @"Duration", 0.5);
-  animationDurationTweak.stepValue = [NSNumber numberWithFloat:0.005f];
-  animationDurationTweak.precisionValue = [NSNumber numberWithFloat:3.0f];
-  
+    return YES;
+}
 
-  FBTweakAction(@"Actions", @"Scoped", @"Two", ^{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Scoped alert test #2." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
+FBTweakAction(@"Actions", @"Global", @"One", ^{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Global alert test #1." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
     [alert show];
-  });
+});
 
-  return YES;
+FBTweakAction(@"Actions", @"Global", @"Two", ^{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Global alert test #2." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
+    [alert show];
+});
+
+- (void)someBasicInlineExamples
+{
+    {
+        BOOL value = FBTweakValue(@"Category", @"Collection", @"Bool", YES);
+        NSLog(@"Bool: %@", value ? @"TRUE" : @"FALSE");
+    }
+    {
+        NSInteger value = FBTweakValue(@"Category", @"Collection", @"Integer", 2);
+        NSLog(@"Integer: %li", (long)value);
+    }
+    {
+        NSInteger value = FBTweakValue(@"Category", @"Collection", @"Integer min/max", 2, 1, 3);
+        NSLog(@"Integer min/max: %li", (long)value);
+    }
+    {
+        double value = FBTweakValue(@"Category", @"Collection", @"Double", 5.5);
+        NSLog(@"Double: %f", value);
+    }
+    {
+        double value = FBTweakValue(@"Category", @"Collection", @"Double min/max", 9.4, 9.0, 10.0);
+        NSLog(@"Double min/max: %f", value);
+    }
+    {
+        NSString *string = FBTweakObject(@"Category", @"Collection", @"String", @"Some text");
+        NSLog(@"String: %@", string);
+    }
+    {
+        UIColor *color = FBTweakObject(@"Category", @"Collection", @"Color", [UIColor colorWithRed:0.25 green:0.87 blue:1.0 alpha:1.0]);
+        NSLog(@"Color: %@", color);
+    }
+    {
+        NSString *string = FBTweakSelectString(@"Category", @"Collection", @"Select", 1, @"Flat", @"Skeumorphic");
+        NSLog(@"Selected value: %@", string);
+    }
+    {
+        FBTweakAction(@"Category", @"Collection", @"Action", ^{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Action" message:@"Action triggered" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
+            [alert show];
+        });
+    }
+    
+    FBTweakAction(@"Actions", @"Scoped", @"One", ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Scoped alert test #1." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
+        [alert show];
+    });
+    
+    FBTweakAction(@"Actions", @"Scoped", @"Two", ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Scoped alert test #2." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
+        [alert show];
+    });
+}
+
+- (void)explicitExample
+{
+    FBBoolTweak *tweak = [[FBBoolTweak alloc] initWithIdentifier:@"com.tweaks.example.advanced"];
+    tweak.name = @"Advanced Settings";
+    tweak.defaultValue = YES;
+    
+    FBTweakStore *store = [FBTweakStore sharedInstance];
+    FBTweakCategory *category = [store tweakCategoryWithName:@"Category"];
+    FBTweakCollection *collection = [category tweakCollectionWithName:@"Collection"];
+    [collection addTweak:tweak];
 }
 
 - (void)tweakDidChange:(FBTweak *)tweak
 {
-  if (tweak == _flipTweak) {
-    _window.layer.sublayerTransform = CATransform3DMakeScale(1.0, [_flipTweak.currentValue boolValue] ? -1.0 : 1.0, 1.0);
-  }
-}
-
-- (void)buttonTapped
-{
-  FBTweakViewController *viewController = [[FBTweakViewController alloc] initWithStore:[FBTweakStore sharedInstance]];
-  viewController.tweaksDelegate = self;
-  [_window.rootViewController presentViewController:viewController animated:YES completion:NULL];
 }
 
 - (void)tweakViewControllerPressedDone:(FBTweakViewController *)tweakViewController
 {
-  [tweakViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void)labelTapped
-{
-  NSTimeInterval duration = FBTweakValue(@"Content", @"Animation", @"Duration", 0.5);
-  [UIView animateWithDuration:duration animations:^{
-    CGFloat scale = FBTweakValue(@"Content", @"Animation", @"Scale", 2.0);
-    _label.transform = CGAffineTransformMakeScale(scale, scale);
-  } completion:^(BOOL finished) {
-    [UIView animateWithDuration:duration animations:^{
-      _label.transform = CGAffineTransformIdentity;
-    }];
-  }];
-}
 
 @end

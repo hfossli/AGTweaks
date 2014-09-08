@@ -12,84 +12,97 @@
 #import "FBTweakCategory.h"
 #import "FBTweakCollection.h"
 
-@implementation FBTweakStore {
-  NSMutableArray *_orderedCategories;
-  NSMutableDictionary *_namedCategories;
-}
+@interface FBTweakStore ()
+
+@property (nonatomic, strong) NSMutableArray *orderedCategories;
+
+@end
+
+@implementation FBTweakStore
 
 + (instancetype)sharedInstance
 {
-  static FBTweakStore *sharedInstance = nil;
-  
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    sharedInstance = [[self alloc] init];
-  });
-  
-  return sharedInstance;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
-  if ((self = [self init])) {
-    _orderedCategories = [[coder decodeObjectForKey:@"categories"] mutableCopy];
-    
-    for (FBTweakCategory *tweakCategory in _orderedCategories) {
-      [_namedCategories setObject:tweakCategory forKey:tweakCategory.name];
-    }
-  }
-  
-  return self;
+    static FBTweakStore *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
 
 - (instancetype)init
 {
-  if ((self = [super init])) {
-    _orderedCategories = [[NSMutableArray alloc] initWithCapacity:16];
-    _namedCategories = [[NSMutableDictionary alloc] initWithCapacity:16];
-  }
-  
-  return self;
+    self = [super init];
+    if(self)
+    {
+        self.orderedCategories = [NSMutableArray new];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [self init];
+    if(self)
+    {
+        NSArray *stored = [coder decodeObjectForKey:@"categories"];
+        
+        for (FBTweakCategory *category in stored)
+        {
+            [self.orderedCategories addObject:category];
+        }
+    }
+    return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-  [coder encodeObject:_orderedCategories forKey:@"categories"];
+    [coder encodeObject:self.orderedCategories forKey:@"categories"];
 }
 
 - (NSArray *)tweakCategories
 {
-  return [_orderedCategories copy];
+    return [self.orderedCategories copy];
 }
 
 - (FBTweakCategory *)tweakCategoryWithName:(NSString *)name
 {
-  return _namedCategories[name];
+    NSInteger index = [self.orderedCategories indexOfObjectPassingTest:^BOOL(FBTweakCollection *collection, NSUInteger idx, BOOL *stop) {
+        return [collection.name isEqualToString:name];
+    }];
+    
+    FBTweakCategory *category = nil;
+    if(index != NSNotFound)
+    {
+        category = self.orderedCategories[index];
+    }
+    else
+    {
+        category = [[FBTweakCategory alloc] initWithName:name];
+        [self addTweakCategory:category];
+    }
+    return category;
 }
 
 - (void)addTweakCategory:(FBTweakCategory *)category
 {
-  [_namedCategories setObject:category forKey:category.name];
-  [_orderedCategories addObject:category];
+    [self.orderedCategories addObject:category];
 }
 
 - (void)removeTweakCategory:(FBTweakCategory *)category
 {
-  [_namedCategories removeObjectForKey:category.name];
-  [_orderedCategories removeObject:category];
+    [self.orderedCategories removeObject:category];
 }
 
 - (void)reset
 {
-  for (FBTweakCategory *category in self.tweakCategories) {
-    for (FBTweakCollection *collection in category.tweakCollections) {
-      for (FBTweak *tweak in collection.tweaks) {
-        if (!tweak.isAction) {
-          tweak.currentValue = nil;
+    for (FBTweakCategory *category in self.tweakCategories)
+    {
+        for (FBTweakCollection *collection in category.tweakCollections)
+        {
+            [collection.tweaks makeObjectsPerformSelector:@selector(reset)];
         }
-      }
     }
-  }
 }
 
 @end

@@ -10,64 +10,82 @@
 #import "FBTweakCategory.h"
 #import "FBTweakCollection.h"
 
-@implementation FBTweakCategory {
-  NSMutableArray *_orderedCollections;
-  NSMutableDictionary *_namedCollections;
+@interface FBTweakCategory ()
+
+@property (nonatomic, copy, readwrite) NSString *name;
+@property (nonatomic, strong) NSMutableArray *orderedCollections;
+
+@end
+
+@implementation FBTweakCategory
+
+- (instancetype)initWithName:(NSString *)name
+{
+    self = [super init];
+    if(self)
+    {
+        self.name = name;
+        self.orderedCollections = [NSMutableArray new];
+    }
+    
+    return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-  NSString *name = [coder decodeObjectForKey:@"name"];
-  
-  if ((self = [self initWithName:name])) {
-    _orderedCollections = [[coder decodeObjectForKey:@"collections"] mutableCopy];
+    NSString *name = [coder decodeObjectForKey:@"name"];
     
-    for (FBTweakCollection *tweakCollection in _orderedCollections) {
-      [_namedCollections setObject:tweakCollection forKey:tweakCollection.name];
+    self = [self initWithName:name];
+    if (self)
+    {
+        NSArray *stored = [coder decodeObjectForKey:@"tweaks"];
+        
+        for(FBTweakCollection *collection in stored)
+        {
+            [self.orderedCollections addObject:collection];
+        }
     }
-  }
-  
-  return self;
-}
-
-- (instancetype)initWithName:(NSString *)name
-{
-  if ((self = [super init])) {
-    _name = [name copy];
-    
-    _orderedCollections = [[NSMutableArray alloc] initWithCapacity:4];
-    _namedCollections = [[NSMutableDictionary alloc] initWithCapacity:4];
-  }
-  
-  return self;
+    return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-  [coder encodeObject:_name forKey:@"name"];
-  [coder encodeObject:_orderedCollections forKey:@"collections"];
+    [coder encodeObject:self.name forKey:@"name"];
+    [coder encodeObject:self.orderedCollections forKey:@"collections"];
 }
 
 - (FBTweakCollection *)tweakCollectionWithName:(NSString *)name
 {
-  return _namedCollections[name];
+    NSInteger index = [self.orderedCollections indexOfObjectPassingTest:^BOOL(FBTweakCollection *collection, NSUInteger idx, BOOL *stop) {
+        return [collection.name isEqualToString:name];
+    }];
+    
+    FBTweakCollection *collection = nil;
+    if(index != NSNotFound)
+    {
+        collection = self.orderedCollections[index];
+    }
+    else
+    {
+        collection = [[FBTweakCollection alloc] initWithName:name];
+        [self addTweakCollection:collection];
+    }
+    return collection;
 }
 
 - (NSArray *)tweakCollections
 {
-  return [_orderedCollections copy];
+    return [self.orderedCollections copy];
 }
 
 - (void)addTweakCollection:(FBTweakCollection *)tweakCollection
 {
-  [_orderedCollections addObject:tweakCollection];
-  [_namedCollections setObject:tweakCollection forKey:tweakCollection.name];
+    [self.orderedCollections addObject:tweakCollection];
 }
 
 - (void)removeTweakCollection:(FBTweakCollection *)tweakCollection
 {
-  [_orderedCollections removeObject:tweakCollection];
-  [_namedCollections removeObjectForKey:tweakCollection.name];
+    [self.orderedCollections removeObject:tweakCollection];
 }
 
 @end

@@ -10,64 +10,74 @@
 #import "FBTweakCollection.h"
 #import "FBTweak.h"
 
-@implementation FBTweakCollection {
-  NSMutableArray *_orderedTweaks;
-  NSMutableDictionary *_identifierTweaks;
+@interface FBTweakCollection ()
+
+@property (nonatomic, copy, readwrite) NSString *name;
+@property (nonatomic, strong, readwrite) NSMutableArray *orderedTweaks;
+
+@end
+
+@implementation FBTweakCollection
+
+- (instancetype)initWithName:(NSString *)name
+{
+    self = [super init];
+    if (self)
+    {
+        self.name = name;
+        self.orderedTweaks = [NSMutableArray new];
+    }
+    return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-  NSString *name = [coder decodeObjectForKey:@"name"];
-  
-  if ((self = [self initWithName:name])) {
-    _orderedTweaks = [[coder decodeObjectForKey:@"tweaks"] mutableCopy];
+    NSString *name = [coder decodeObjectForKey:@"name"];
     
-    for (FBTweak *tweak in _orderedTweaks) {
-      [_identifierTweaks setObject:tweak forKey:tweak.identifier];
+    self = [self initWithName:name];
+    if (self)
+    {
+        NSArray *stored = [coder decodeObjectForKey:@"tweaks"];
+        
+        for(FBTweak *tweak in stored)
+        {
+            [self.orderedTweaks addObject:tweak];
+        }
     }
-  }
-  
-  return self;
-}
-
-- (instancetype)initWithName:(NSString *)name
-{
-  if ((self = [super init])) {
-    _name = [name copy];
-    
-    _orderedTweaks = [[NSMutableArray alloc] initWithCapacity:4];
-    _identifierTweaks = [[NSMutableDictionary alloc] initWithCapacity:4];
-  }
-  
-  return self;
+    return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-  [coder encodeObject:_name forKey:@"name"];
-  [coder encodeObject:_orderedTweaks forKey:@"tweaks"];
+    [coder encodeObject:self.name forKey:@"name"];
+    [coder encodeObject:self.orderedTweaks forKey:@"tweaks"];
 }
 
 - (FBTweak *)tweakWithIdentifier:(NSString *)identifier
 {
-  return _identifierTweaks[identifier];
+    NSInteger index = [self.orderedTweaks indexOfObjectPassingTest:^BOOL(FBTweak *tweak, NSUInteger idx, BOOL *stop) {
+        return [tweak.identifier isEqualToString:identifier];
+    }];
+    if(index != NSNotFound)
+    {
+        return self.orderedTweaks[index];
+    }
+    return nil;
 }
 
 - (NSArray *)tweaks
 {
-  return [_orderedTweaks copy];
+    return [self.orderedTweaks copy];
 }
 
 - (void)addTweak:(FBTweak *)tweak
 {
-  [_orderedTweaks addObject:tweak];
-  [_identifierTweaks setObject:tweak forKey:tweak.identifier];
+    [self.orderedTweaks addObject:tweak];
 }
 
 - (void)removeTweak:(FBTweak *)tweak
 {
-  [_orderedTweaks removeObject:tweak];
-  [_identifierTweaks removeObjectForKey:tweak.identifier];
+    [self.orderedTweaks removeObject:tweak];
 }
 
 @end

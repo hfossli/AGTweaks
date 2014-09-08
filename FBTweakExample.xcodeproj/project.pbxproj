@@ -16,6 +16,7 @@
 		18EFE4FE189F02F800DA6A5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EFE4FD189F02F800DA6A5D /* Images.xcassets */; };
 		18EFE524189F04B000DA6A5D /* libFBTweak.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EFE523189F04B000DA6A5D /* libFBTweak.a */; };
 		29E9F17D18E35D2B001EAF7D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E9F17C18E35D2B001EAF7D /* MessageUI.framework */; };
+		4C1D1B2919B9F7E5009DF0AB /* FBTweakDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D1B2819B9F7E5009DF0AB /* FBTweakDemoController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		18EFE504189F02F800DA6A5D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		18EFE523189F04B000DA6A5D /* libFBTweak.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBTweak.a; path = "../FBTweak/build/Debug-iphoneos/libFBTweak.a"; sourceTree = "<group>"; };
 		29E9F17C18E35D2B001EAF7D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		4C1D1B2719B9F7E5009DF0AB /* FBTweakDemoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakDemoController.h; sourceTree = "<group>"; };
+		4C1D1B2819B9F7E5009DF0AB /* FBTweakDemoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTweakDemoController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 			children = (
 				18EFE4FA189F02F800DA6A5D /* FBAppDelegate.h */,
 				18EFE4FB189F02F800DA6A5D /* FBAppDelegate.m */,
+				4C1D1B2719B9F7E5009DF0AB /* FBTweakDemoController.h */,
+				4C1D1B2819B9F7E5009DF0AB /* FBTweakDemoController.m */,
 				18EFE4FD189F02F800DA6A5D /* Images.xcassets */,
 				18EFE4F2189F02F800DA6A5D /* Supporting Files */,
 			);
@@ -169,6 +174,7 @@
 			files = (
 				18EFE4FC189F02F800DA6A5D /* FBAppDelegate.m in Sources */,
 				18EFE4F8189F02F800DA6A5D /* main.m in Sources */,
+				4C1D1B2919B9F7E5009DF0AB /* FBTweakDemoController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

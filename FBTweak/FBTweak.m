@@ -8,103 +8,91 @@
  */
 
 #import "FBTweak.h"
+#import "FBTweak_SubclassEyesOnly.h"
 
-@implementation FBTweak {
-  NSHashTable *_observers;
-}
+@interface FBTweak ()
 
-- (instancetype)initWithCoder:(NSCoder *)coder
+@property (nonatomic, copy, readwrite) NSString *identifier;
+@property (nonatomic, strong, readwrite) NSHashTable *observers;
+
+@end
+
+@implementation FBTweak
+
+- (instancetype)init
 {
-  NSString *identifier = [coder decodeObjectForKey:@"identifier"];
-  
-  if ((self = [self initWithIdentifier:identifier])) {
-    _name = [coder decodeObjectForKey:@"name"];
-    _defaultValue = [coder decodeObjectForKey:@"defaultValue"];
-    _minimumValue = [coder decodeObjectForKey:@"minimumValue"];
-    _maximumValue = [coder decodeObjectForKey:@"maximumValue"];
-    _precisionValue = [coder decodeObjectForKey:@"precisionValue"];
-    _stepValue = [coder decodeObjectForKey:@"stepValue"];
-    
-    // Fall back to the user-defaults loaded value if current value isn't set.
-    _currentValue = [coder decodeObjectForKey:@"currentValue"] ?: _currentValue;
-  }
-  
-  return self;
+    [NSException raise:NSInternalInconsistencyException format:@"Use designated initializer (%@)", NSStringFromSelector(@selector(initWithIdentifier:))];
+    return nil;
 }
 
 - (instancetype)initWithIdentifier:(NSString *)identifier
 {
-  if ((self = [super init])) {
-    _identifier = identifier;
-    _currentValue = [[NSUserDefaults standardUserDefaults] objectForKey:_identifier];
-  }
-  
-  return self;
+    self = [super init];
+    if (self)
+    {
+        self.identifier = identifier;
+        self.observers = [NSHashTable weakObjectsHashTable];
+
+        [self load];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    NSString *identifier = [coder decodeObjectForKey:@"identifier"];
+    self = [self initWithIdentifier:identifier];
+    if (self)
+    {
+        self.name = [coder decodeObjectForKey:@"name"];
+    }
+    return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-  [coder encodeObject:_identifier forKey:@"identifier"];
-  [coder encodeObject:_name forKey:@"name"];
-  
-  if (!self.isAction) {
-    [coder encodeObject:_defaultValue forKey:@"defaultValue"];
-    [coder encodeObject:_minimumValue forKey:@"minimumValue"];
-    [coder encodeObject:_maximumValue forKey:@"maximumValue"];
-    [coder encodeObject:_currentValue forKey:@"currentValue"];
-    [coder encodeObject:_precisionValue forKey:@"precisionValue"];
-    [coder encodeObject:_stepValue forKey:@"stepValue"];
-  }
+    [coder encodeObject:self.identifier forKey:@"identifier"];
+    [coder encodeObject:self.name forKey:@"name"];
 }
 
-- (BOOL)isAction
+- (void)tweakChanged:(FBTweakChangeReason)reason
 {
-  // NSBlock isn't a public class, walk the hierarchy for it.
-  Class blockClass = [^{} class];
-
-  while ([blockClass superclass] != [NSObject class]) {
-    blockClass = [blockClass superclass];
-  }
-
-  return [_defaultValue isKindOfClass:blockClass];
-}
-
-- (void)setCurrentValue:(FBTweakValue)currentValue
-{
-  NSAssert(!self.isAction, @"actions cannot have non-default values");
-
-  if (_minimumValue != nil && currentValue != nil && [_minimumValue compare:currentValue] == NSOrderedDescending) {
-    currentValue = _minimumValue;
-  }
-  
-  if (_maximumValue != nil && currentValue != nil && [_maximumValue compare:currentValue] == NSOrderedAscending) {
-    currentValue = _maximumValue;
-  }
-  
-  if (_currentValue != currentValue) {
-    _currentValue = currentValue;
-    [[NSUserDefaults standardUserDefaults] setObject:_currentValue forKey:_identifier];
-    
-    for (id<FBTweakObserver> observer in [_observers setRepresentation]) {
-      [observer tweakDidChange:self];
+    if(reason == FBTweakChangeReasonEdit)
+    {
+        [self save];
     }
-  }
+    
+    for (id <FBTweakObserver> observer in [_observers setRepresentation])
+    {
+        [observer tweakDidChange:self];
+    }
+}
+
+- (void)load
+{
+    [NSException raise:NSInternalInconsistencyException format:@"Subclasses should override"];
+}
+
+- (void)save
+{
+    [NSException raise:NSInternalInconsistencyException format:@"Subclasses should override"];
+}
+
+- (void)reset
+{
+    [NSException raise:NSInternalInconsistencyException format:@"Subclasses should override"];
 }
 
 - (void)addObserver:(id<FBTweakObserver>)observer
 {
-  if (_observers == nil) {
-    _observers = [NSHashTable weakObjectsHashTable];
-  }
-  
-  NSAssert(observer != nil, @"observer is required");
-  [_observers addObject:observer];
+    NSAssert(observer != nil, @"Observer is required");
+    [self.observers addObject:observer];
 }
 
 - (void)removeObserver:(id<FBTweakObserver>)observer
 {
-  NSAssert(observer != nil, @"observer is required");
-  [_observers removeObject:observer];
+    NSAssert(observer != nil, @"Observer is required");
+    [self.observers removeObject:observer];
 }
 
 @end

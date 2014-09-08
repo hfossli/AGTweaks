@@ -31,6 +31,16 @@
     return YES;
 }
 
+FBTweakAction(@"Actions", @"Global", @"One", ^{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Global alert test #1." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
+    [alert show];
+});
+
+FBTweakAction(@"Actions", @"Global", @"Two", ^{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Global alert test #2." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
+    [alert show];
+});
+
 - (void)someBasicInlineExamples
 {
     {

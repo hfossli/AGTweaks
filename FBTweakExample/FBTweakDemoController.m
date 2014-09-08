@@ -20,9 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    FBTweakBindObject(self, title, @"Controller", @"Settings", @"Title", @"test");
-    FBTweakBindObject(self.view, backgroundColor, @"Window", @"Background", @"Color", [UIColor colorWithWhite:0.9 alpha:1.0]);
+
+    FBTweakBindObject(self.view, backgroundColor, @"Demo", @"Background", @"Color", [UIColor colorWithWhite:0.9 alpha:1.0]);
     
     [self setupLabel];
     [self setupButton];
@@ -37,14 +36,14 @@
     self.label.userInteractionEnabled = YES;
     self.label.backgroundColor = [UIColor clearColor];
     self.label.textColor = [UIColor blackColor];
-    self.label.font = [UIFont systemFontOfSize:FBTweakValue(@"Content", @"Text", @"Size", 60.0)];
+    self.label.font = [UIFont systemFontOfSize:FBTweakValue(@"Demo", @"Text", @"Font", 60.0)];
     [self.view addSubview:self.label];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTapped)];
     [self.label addGestureRecognizer:tapRecognizer];
     
-    FBTweakBindObject(self.label, text, @"Content", @"Text", @"String", @"Tweaks");
-    FBTweakBindValue(self.label, alpha, @"Content", @"Text", @"Alpha", 0.5, 0.0, 1.0);
+    FBTweakBindObject(self.label, text, @"Demo", @"Text", @"String", @"Tweaks");
+    FBTweakBindValue(self.label, alpha, @"Demo", @"Text", @"Alpha", 0.5, 0.0, 1.0);
 }
 
 - (void)setupButton
@@ -60,7 +59,7 @@
     [tweaksButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:tweaksButton];
     
-    FBDoubleTweak *animationDurationTweak = FBTweakValueInline(@"Content", @"Animation", @"Duration", 0.5);
+    FBDoubleTweak *animationDurationTweak = FBTweakValueInline(@"Demo", @"Animation", @"Duration", 0.5);
     animationDurationTweak.stepValue = 0.005;
     animationDurationTweak.precisionValue = 3.0;
 }
@@ -72,9 +71,9 @@
 
 - (void)labelTapped
 {
-    NSTimeInterval duration = FBTweakValue(@"Content", @"Animation", @"Duration", 0.5);
+    NSTimeInterval duration = FBTweakValue(@"Demo", @"Animation", @"Duration", 0.5);
     [UIView animateWithDuration:duration animations:^{
-        CGFloat scale = FBTweakValue(@"Content", @"Animation", @"Scale", 2.0);
+        CGFloat scale = FBTweakValue(@"Demo", @"Animation", @"Scale", 2.0);
         self.label.transform = CGAffineTransformMakeScale(scale, scale);
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:duration animations:^{

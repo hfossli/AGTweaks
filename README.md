@@ -1,4 +1,10 @@
-# Tweaks
+# AGTweaks 
+AGTweaks is a fork of [Tweaks](https://github.com/facebook/Tweaks/) from Facebook. This fork aims at improving the UI and overall experience over having the simplest possible API. It is possible to get the best from both worlds within a couple of hours.
+
+This will not be a public pod. 
+
+## About Tweaks
+
 Tweaks is an easy way to fine-tune an iOS app.
 
 ![Tweaks](https://github.com/facebook/Tweaks/blob/master/Images/Tweaks.gif?raw=true)
@@ -38,21 +44,28 @@ For numeric tweaks (`NSInteger`, `CGFloat`, and others), you can pass an extra t
 self.red = FBTweakValue(@"Header", @"Colors", @"Red", 0.5, 0.0, 1.0);
 ```
 
+### Object
+
+```objective-c
+UIColor *color = FBTweakObject(@"Category", @"Collection", @"Color", [UIColor colorWithRed:0.25 green:0.87 blue:1.0 alpha:1.0]);
+```
+
 ### Bind
-To make tweaks update live, you can use `FBTweakBind`:
+To make tweaks update live, you can use `FBTweakBindValue`:
 
 ```objective-c
-FBTweakBind(self.headerView, alpha, @"Main Screen", @"Header", @"Alpha", 0.85);
+FBTweakBindValue(self.carousel, decelerationRate, @"Cover flow", @"Settings", @"Deceleration rate", 0.93);
+FBTweakBindValue(audioPlayer, volume, @"Player", @"Audio", @"Volume", 0.9);
+FBTweakBindValue(webView.scrollView, scrollEnabled, @"Browser", @"Scrolling", @"Enabled", YES);
 ```
 
-The first parameter is the object to bind to, and the second is the property. Whenever the tweak is changed, `self.headerView`'s `alpha` property is updated to match. A few more examples:
+Or `FBTweakBindObject`:
 
 ```objective-c
-FBTweakBind(audioPlayer, volume, @"Player", @"Audio", @"Volume", 0.9);
-FBTweakBind(webView.scrollView, scrollEnabled, @"Browser", @"Scrolling", @"Enabled", YES);
+FBTweakBindObject(self.view, backgroundColor, @"Demo", @"Background", @"Color", [UIColor colorWithWhite:0.9 alpha:1.0]);
 ```
 
-As with `FBTweakValue`, in release builds `FBTweakBind` expands to just setting the property to the default value.
+As with `FBTweakValue`, in release builds `FBTweakBindValue` and `FBTweakBindObject` expands to just setting the property to the default value.
 
 ## Action
 Actions let you run a (global) block when a tweak is selected. To make one, use `FBTweakAction`:
@@ -95,9 +108,9 @@ You can also access the objects that make up the macros mentioned above. That ca
 For example, to manually create a tweak:
 
 ```objective-c
-FBTweak *tweak = [[FBTweak alloc] initWithIdentifier:@"com.tweaks.example.advanced"];
+FBIntegerTweak *tweak = [[FBTweak alloc] initWithIdentifier:@"com.tweaks.example.advanced"];
 tweak.name = @"Advanced Settings";
-tweak.defaultValue = @NO;
+tweak.defaultValue = 20;
 
 FBTweakStore *store = [FBTweakStore sharedInstance];
 FBTweakCategory *category = [store tweakCategoryWithName:@"Settings"];
@@ -122,16 +135,6 @@ To override when tweaks are enabled, you can define the `FB_TWEAK_ENABLED` macro
 In debug builds, the tweak macros use `__attribute__((section))` to statically store data about each tweak in the `__FBTweak` section of the mach-o. Tweaks loads that data at startup and loads the latest values from `NSUserDefaults`.
 
 In release builds, the macros just expand to the default value. Nothing extra is included in the binary.
-
-## Installation
-There are two options:
-
- 1. Tweaks is available as `Tweaks` in [Cocoapods](http://cocoapods.org). (If you have issues with custom Xcode configurations, [this comment](https://github.com/facebook/Tweaks/issues/4#issuecomment-40629741) might help.)
- 2. Manually add the files from `FBTweak/` into your Xcode project. Slightly simpler, but updates are also manual.
-
-Tweaks requires iOS 6 or later.
-
-There's also a demo project available. To use it, make sure to open `FBTweakExample.xcworkspace` (rather than the `.xcodeproj`) so the dependencies build correctly.
 
 ## Contributing
 See the CONTRIBUTING file for how to help out.

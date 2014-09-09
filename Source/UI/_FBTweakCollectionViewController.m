@@ -266,7 +266,7 @@
         FBSelectValueTweak *selectValueTweak = (FBSelectValueTweak *)tweak;
         CGFloat charactersPerPoint = 10.0 / 100.0;
         CGFloat space = self.view.bounds.size.width;
-        NSUInteger maxLength = space * charactersPerPoint;
+        NSUInteger maxLength = (space / selectValueTweak.strings.count) * charactersPerPoint;
         BOOL gotLongWords = [selectValueTweak.strings indexOfObjectPassingTest:^BOOL(NSString *strings, NSUInteger idx, BOOL *stop) {
             return strings.length > maxLength;
         }] != NSNotFound;

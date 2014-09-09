@@ -36,7 +36,6 @@
     self.label.userInteractionEnabled = YES;
     self.label.backgroundColor = [UIColor clearColor];
     self.label.textColor = [UIColor blackColor];
-    self.label.font = [UIFont systemFontOfSize:FBTweakValue(@"Demo", @"Text", @"Font", 60.0)];
     [self.view addSubview:self.label];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTapped)];
@@ -44,6 +43,16 @@
     
     FBTweakBindObject(self.label, text, @"Demo", @"Text", @"String", @"Tweaks");
     FBTweakBindValue(self.label, alpha, @"Demo", @"Text", @"Alpha", 0.5, 0.0, 1.0);
+
+    #define default_font_size 60
+    self.label.font = [UIFont systemFontOfSize:FBTweakValue(@"Demo", @"Text", @"Fontsize", default_font_size)];
+
+    #if FB_TWEAK_ENABLED
+        __weak __typeof__(self) wself = self;
+        FBTweakOnChange(@"Demo", @"Text", @"Fontsize", ^(FBIntegerTweak *tweak) {
+            wself.label.font = [UIFont systemFontOfSize:tweak.currentValue];
+        });
+    #endif
 }
 
 - (void)setupButton
@@ -58,10 +67,6 @@
     [tweaksButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [tweaksButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:tweaksButton];
-    
-    FBDoubleTweak *animationDurationTweak = FBTweakValueInline(@"Demo", @"Animation", @"Duration", 0.5);
-    animationDurationTweak.stepValue = 0.005;
-    animationDurationTweak.precisionValue = 3.0;
 }
 
 - (void)buttonTapped
@@ -71,6 +76,11 @@
 
 - (void)labelTapped
 {
+
+    FBDoubleTweak *animationDurationTweak = FBTweakValueInline(@"Demo", @"Animation", @"Duration", 0.5);
+    animationDurationTweak.stepValue = 0.005;
+    animationDurationTweak.precisionValue = 3.0;
+
     NSTimeInterval duration = FBTweakValue(@"Demo", @"Animation", @"Duration", 0.5);
     [UIView animateWithDuration:duration animations:^{
         CGFloat scale = FBTweakValue(@"Demo", @"Animation", @"Scale", 2.0);

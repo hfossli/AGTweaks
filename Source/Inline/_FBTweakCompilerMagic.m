@@ -20,9 +20,14 @@
 
 #if FB_TWEAK_ENABLED
 
-extern NSString *_FBTweakIdentifier(fb_tweak_entry *entry)
+extern NSString *_FBTweakIdentifier(NSString *category, NSString *collection, NSString *name)
 {
-    return [NSString stringWithFormat:@"FBTweak:%@-%@-%@", *entry->category, *entry->collection, *entry->name];
+    return [NSString stringWithFormat:@"FBTweak:%@-%@-%@", category, collection, name];
+}
+
+extern NSString *_FBTweakIdentifierFromEntry(fb_tweak_entry *entry)
+{
+    return _FBTweakIdentifier(*entry->category, *entry->collection, *entry->name);
 }
 
 @interface _FBTweakInlineLoader : NSObject
@@ -74,7 +79,7 @@ extern NSString *_FBTweakIdentifier(fb_tweak_entry *entry)
             [category addTweakCollection:collection];
         }
         
-        NSString *identifier = _FBTweakIdentifier(entry);
+        NSString *identifier = _FBTweakIdentifierFromEntry(entry);
         if ([collection tweakWithIdentifier:identifier] == nil) {
 
             fb_tweak_entry_init_block initBlock = *entry->initBlock;

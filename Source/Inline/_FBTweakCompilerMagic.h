@@ -36,8 +36,10 @@ typedef struct {
     fb_tweak_entry_init_block *initBlock;
 } fb_tweak_entry;
 
-extern NSString *_FBTweakIdentifier(fb_tweak_entry *entry);
-    
+extern NSString *_FBTweakIdentifier(NSString *category, NSString *collection, NSString *name);
+extern NSString *_FBTweakIdentifierFromEntry(fb_tweak_entry *entry);
+
+
 #  ifdef __cplusplus
 }
 #  endif

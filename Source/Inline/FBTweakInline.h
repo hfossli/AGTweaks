@@ -23,6 +23,7 @@
 #define FBTweakObject(category_, collection_, name_, defaultObject_) defaultObject_
 #define FBTweakObjectInline(category_, collection_, name_, defaultValue_) nil
 #define FBTweakBindObject(object_, property_, category_, collection_, name_, defaultObject_) object_.property_ = defaultObject_
+#define FBTweakOnChange(category_, collection_, name_, ...)
 
 # else
 
@@ -82,6 +83,7 @@
 
 #define FBTweakValueInline(category_, collection_, name_, defaultValue_, ...) \
         _FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__)
+
 /**
  @abstract Binds an object property to a tweak.
  @param object_ The object to bind to.
@@ -111,6 +113,19 @@
  */
 #define FBTweakBindObject(object_, property_, category_, collection_, name_, default_) \
         _FBTweakBindObject(object_, property_, category_, collection_, name_, default_)
+
+/**
+ @abstract Calls a block every time a tweak changes
+ @param ... The block
+ @discussion Deallocates when 'self' is deallocated
+ 
+    FBTweakOnChange(@"Category", @"Collection", @"Name", ^(FBTweak *tweak) {
+        // code
+    });
+
+ */
+#define FBTweakOnChange(category_, collection_, name_, ...) \
+        _FBTweakOnChange(category_, collection_, name_, __VA_ARGS__)
 
 # endif
 

@@ -37,7 +37,7 @@
     FBTweakCategory *category = [store tweakCategoryWithName:category__]; \
     FBTweakCollection *collection = [category tweakCollectionWithName:collection__]; \
     \
-    NSString *identifier = _FBTweakIdentifier(&entry); \
+    NSString *identifier = _FBTweakIdentifierFromEntry(&entry); \
     class_ *__inline_tweak = (class_ *)[collection tweakWithIdentifier:identifier]; \
     if(__inline_tweak == nil) { \
         __inline_tweak = [[class_ alloc] initWithIdentifier:identifier]; \
@@ -227,6 +227,18 @@
         object___.property_ = _FBTweakValue(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
     }]; \
     [observer__ attachToObject:object_]; \
+})())
+
+#define _FBTweakOnChange(category_, collection_, name_, ...) ((^{ \
+    NSString *identifier = _FBTweakIdentifier(category_, collection_, name_); \
+    FBTweakStore *store = [FBTweakStore sharedInstance]; \
+    FBTweakCategory *category = [store tweakCategoryWithName:category_]; \
+    FBTweakCollection *collection = [category tweakCollectionWithName:collection_]; \
+    FBTweak *tweak = [collection tweakWithIdentifier:identifier]; \
+    _FBTweakBindObserver *observer = [[_FBTweakBindObserver alloc] initWithTweak:tweak block:^(id object__) { \
+        __VA_ARGS__((id)tweak); \
+    }]; \
+    [observer attachToObject:self]; \
 })())
 
 #endif

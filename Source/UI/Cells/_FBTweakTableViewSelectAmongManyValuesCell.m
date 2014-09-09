@@ -91,10 +91,10 @@
     textLabelFrame.origin.y = 0;
     self.textLabel.frame = textLabelFrame;
 
-    CGRect tableViewFrame = self.bounds;
-    tableViewFrame.origin.x += 12;
-    tableViewFrame.size.width -= 18;
-    tableViewFrame.origin.y += 40;
+    CGRect tableViewFrame;
+    tableViewFrame.origin.x = 12;
+    tableViewFrame.size.width = self.bounds.size.width - 18;
+    tableViewFrame.origin.y = 50;
     tableViewFrame.size.height = self.tweak.strings.count * 44;
     self.tableView.frame = tableViewFrame;
 }
@@ -111,7 +111,7 @@
 
 + (CGFloat)neededHeightForTweak:(FBSelectValueTweak *)tweak
 {
-    return 50 + (tweak.strings.count * 44.0);
+    return 60 + (tweak.strings.count * 44.0);
 }
 
 #pragma mark - Table view

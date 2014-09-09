@@ -1,6 +1,8 @@
 # AGTweaks 
 AGTweaks is a fork of [Tweaks](https://github.com/facebook/Tweaks/) from Facebook. This fork aims at improving the UI and overall experience over having the simplest possible API. It is possible to get the best from both worlds within a couple of hours.
 
+This will not be a public pod. 
+
 ## About Tweaks
 
 Tweaks is an easy way to fine-tune an iOS app.

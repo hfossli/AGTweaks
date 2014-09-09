@@ -23,7 +23,7 @@
 #define FBTweakObject(category_, collection_, name_, defaultObject_) defaultObject_
 #define FBTweakObjectInline(category_, collection_, name_, defaultValue_) nil
 #define FBTweakBindObject(object_, property_, category_, collection_, name_, defaultObject_) object_.property_ = defaultObject_
-#define FBTweakOnChange(category_, collection_, name_, ...)
+#define FBTweakRead(category_, collection_, name_, ...)
 
 # else
 
@@ -115,8 +115,8 @@
         _FBTweakBindObject(object_, property_, category_, collection_, name_, default_)
 
 /**
- @abstract Calls a block every time a tweak changes
- @param ... The block
+ @abstract Calls a block initially and every time a tweak changes
+ @param ... The block. The block should take an FBTweak subclass as an argument.
  @discussion Deallocates when 'self' is deallocated
  
     FBTweakOnChange(@"Category", @"Collection", @"Name", ^(FBTweak *tweak) {
@@ -124,8 +124,8 @@
     });
 
  */
-#define FBTweakOnChange(category_, collection_, name_, ...) \
-        _FBTweakOnChange(category_, collection_, name_, __VA_ARGS__)
+#define FBTweakRead(category_, collection_, name_, ...) \
+        _FBTweakRead(category_, collection_, name_, __VA_ARGS__)
 
 # endif
 

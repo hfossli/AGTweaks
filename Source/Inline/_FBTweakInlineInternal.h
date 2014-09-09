@@ -229,15 +229,26 @@
     [observer__ attachToObject:object_]; \
 })())
 
-#define _FBTweakOnChange(category_, collection_, name_, ...) ((^{ \
+#define _FBTweakGet(category_, collection_, name_) ((^{ \
     NSString *identifier = _FBTweakIdentifier(category_, collection_, name_); \
     FBTweakStore *store = [FBTweakStore sharedInstance]; \
     FBTweakCategory *category = [store tweakCategoryWithName:category_]; \
     FBTweakCollection *collection = [category tweakCollectionWithName:collection_]; \
     FBTweak *tweak = [collection tweakWithIdentifier:identifier]; \
-    _FBTweakBindObserver *observer = [[_FBTweakBindObserver alloc] initWithTweak:tweak block:^(id object__) { \
-        __VA_ARGS__((id)tweak); \
+    return (id)tweak; \
+})())
+
+#define _FBTweakRead(category_, collection_, name_, ...) ((^{ \
+    NSString *identifier = _FBTweakIdentifier(category_, collection_, name_); \
+    FBTweakStore *store = [FBTweakStore sharedInstance]; \
+    FBTweakCategory *category = [store tweakCategoryWithName:category_]; \
+    FBTweakCollection *collection = [category tweakCollectionWithName:collection_]; \
+    FBTweak *tweak_ = [collection tweakWithIdentifier:identifier]; \
+    void (^block_)(id tweak) = __VA_ARGS__; \
+    _FBTweakBindObserver *observer = [[_FBTweakBindObserver alloc] initWithTweak:tweak_ block:^(id object__) { \
+        block_(tweak_); \
     }]; \
+    block_(tweak_); \
     [observer attachToObject:self]; \
 })())
 

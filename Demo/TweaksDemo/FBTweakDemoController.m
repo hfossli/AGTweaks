@@ -49,7 +49,7 @@
 
     #if FB_TWEAK_ENABLED
         __weak __typeof__(self) wself = self;
-        FBTweakOnChange(@"Demo", @"Text", @"Fontsize", ^(FBIntegerTweak *tweak) {
+        FBTweakRead(@"Demo", @"Text", @"Fontsize", ^(FBIntegerTweak *tweak) {
             wself.label.font = [UIFont systemFontOfSize:tweak.currentValue];
         });
     #endif
@@ -76,7 +76,6 @@
 
 - (void)labelTapped
 {
-
     FBDoubleTweak *animationDurationTweak = FBTweakValueInline(@"Demo", @"Animation", @"Duration", 0.5);
     animationDurationTweak.stepValue = 0.005;
     animationDurationTweak.precisionValue = 3.0;

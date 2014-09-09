@@ -8,7 +8,7 @@
  */
 
 #import <FBTweak/_FBTweakTableViewCell.h>
-#import "FBObjectTweak.h"
+#import <FBTweak/FBObjectTweak.h>
 
 @interface _FBTweakTableViewColorCell: _FBTweakTableViewCell
 

@@ -12,5 +12,4 @@
 #import <FBTweak/FBTweakShakeWindow.h>
 #import <FBTweak/FBTweakViewController.h>
 #import <FBTweak/FBTweakMacros.h>
-
-#import <FBTweak/_FBTweakEXTMetamacros.h>
+#import <FBTweak/FBAllTweaks.h>

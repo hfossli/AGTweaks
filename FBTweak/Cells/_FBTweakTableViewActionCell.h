@@ -8,7 +8,7 @@
  */
 
 #import <FBTweak/_FBTweakTableViewCell.h>
-#import "FBActionTweak.h"
+#import <FBTweak/FBActionTweak.h>
 
 @interface _FBTweakTableViewActionCell : _FBTweakTableViewCell
 

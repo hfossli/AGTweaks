@@ -8,7 +8,7 @@
  */
 
 #import <FBTweak/FBTweakEnabled.h>
-#import <FBTweak/FBTweaks.h>
+#import <FBTweak/FBAllTweaks.h>
 #import <FBTweak/FBTweak.h>
 #import <FBTweak/_FBTweakBindObserver.h>
 #import <FBTweak/FBTweakStore.h>

@@ -8,7 +8,7 @@
  */
 
 #import <FBTweak/_FBTweakTableViewCell.h>
-#import "FBDoubleTweak.h"
+#import <FBTweak/FBDoubleTweak.h>
 
 @interface _FBTweakTableViewDoubleCell : _FBTweakTableViewCell
 

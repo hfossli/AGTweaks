@@ -7,7 +7,7 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "FBColorTweak.h"
+#import <FBTweak/FBColorTweak.h>
 
 @implementation FBColorTweak
 

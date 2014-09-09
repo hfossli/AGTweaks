@@ -7,7 +7,7 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "FBSelectValueTweak.h"
+#import <FBTweak/FBSelectValueTweak.h>
 #import <FBTweak/FBTweak_SubclassEyesOnly.h>
 
 @implementation FBSelectValueTweak

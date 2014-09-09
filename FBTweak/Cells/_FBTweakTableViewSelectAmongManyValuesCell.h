@@ -8,7 +8,7 @@
  */
 
 #import <FBTweak/_FBTweakTableViewCell.h>
-#import "FBSelectValueTweak.h"
+#import <FBTweak/FBSelectValueTweak.h>
 
 @interface _FBTweakTableViewSelectAmongManyValuesCell : _FBTweakTableViewCell
 

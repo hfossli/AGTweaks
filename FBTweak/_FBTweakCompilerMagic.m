@@ -8,7 +8,7 @@
  */
 
 #import <FBTweak/_FBTweakCompilerMagic.h>
-#import <FBTweak/FBTweaks.h>
+#import <FBTweak/FBAllTweaks.h>
 #import <FBTweak/FBTweakCollection.h>
 #import <FBTweak/FBTweakStore.h>
 #import <FBTweak/FBTweakCategory.h>

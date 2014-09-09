@@ -10,7 +10,7 @@
 #import <FBTweak/FBTweakCollection.h>
 #import <FBTweak/FBTweakCategory.h>
 #import <FBTweak/_FBTweakCollectionViewController.h>
-#import <FBTweak/FBTweaks.h>
+#import <FBTweak/FBAllTweaks.h>
 #import <FBTweak/_FBTweakTableViewCells.h>
 
 @interface _FBTweakCollectionViewController () <UITableViewDelegate, UITableViewDataSource>

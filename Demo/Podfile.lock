@@ -1,0 +1,14 @@
+PODS:
+  - Tweaks (1.2)
+
+DEPENDENCIES:
+  - Tweaks (from `../Tweaks.podspec`)
+
+EXTERNAL SOURCES:
+  Tweaks:
+    :path: ../Tweaks.podspec
+
+SPEC CHECKSUMS:
+  Tweaks: 004b3a4283475333e236d0c06978cc3fbd183294
+
+COCOAPODS: 0.33.1

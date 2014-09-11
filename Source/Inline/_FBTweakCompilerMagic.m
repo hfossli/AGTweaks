@@ -7,11 +7,11 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <Tweaks/_FBTweakCompilerMagic.h>
-#import <Tweaks/FBAllTweaks.h>
-#import <Tweaks/FBTweakCollection.h>
-#import <Tweaks/FBTweakStore.h>
-#import <Tweaks/FBTweakCategory.h>
+#import "_FBTweakCompilerMagic.h"
+#import "FBAllTweaks.h"
+#import "FBTweakCollection.h"
+#import "FBTweakStore.h"
+#import "FBTweakCategory.h"
 
 #import <libkern/OSAtomic.h>
 #import <mach-o/getsect.h>

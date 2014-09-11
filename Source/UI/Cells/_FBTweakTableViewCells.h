@@ -7,12 +7,12 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <Tweaks/_FBTweakTableViewBoolCell.h>
-#import <Tweaks/_FBTweakTableViewIntegerCell.h>
-#import <Tweaks/_FBTweakTableViewDoubleCell.h>
-#import <Tweaks/_FBTweakTableViewSelectAmongFewValuesCell.h>
-#import <Tweaks/_FBTweakTableViewSelectAmongManyValuesCell.h>
-#import <Tweaks/_FBTweakTableViewStringCell.h>
-#import <Tweaks/_FBTweakTableViewActionCell.h>
-#import <Tweaks/_FBTweakTableViewUnsupportedCell.h>
-#import <Tweaks/_FBTweakTableViewColorCell.h>
+#import "_FBTweakTableViewBoolCell.h"
+#import "_FBTweakTableViewIntegerCell.h"
+#import "_FBTweakTableViewDoubleCell.h"
+#import "_FBTweakTableViewSelectAmongFewValuesCell.h"
+#import "_FBTweakTableViewSelectAmongManyValuesCell.h"
+#import "_FBTweakTableViewStringCell.h"
+#import "_FBTweakTableViewActionCell.h"
+#import "_FBTweakTableViewUnsupportedCell.h"
+#import "_FBTweakTableViewColorCell.h"

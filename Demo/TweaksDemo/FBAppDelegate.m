@@ -8,7 +8,7 @@
  */
 
 #import "FBAppDelegate.h"
-#import <Tweaks/Tweaks.h>
+#import "Tweaks.h"
 #import "FBTweakDemoController.h"
 
 @interface FBAppDelegate () <FBTweakObserver, FBTweakViewControllerDelegate>

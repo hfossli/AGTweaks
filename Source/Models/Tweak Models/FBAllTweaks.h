@@ -7,9 +7,9 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <Tweaks/FBBoolTweak.h>
-#import <Tweaks/FBIntegerTweak.h>
-#import <Tweaks/FBDoubleTweak.h>
-#import <Tweaks/FBSelectValueTweak.h>
-#import <Tweaks/FBActionTweak.h>
-#import <Tweaks/FBObjectTweak.h>
+#import "FBBoolTweak.h"
+#import "FBIntegerTweak.h"
+#import "FBDoubleTweak.h"
+#import "FBSelectValueTweak.h"
+#import "FBActionTweak.h"
+#import "FBObjectTweak.h"

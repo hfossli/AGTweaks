@@ -7,8 +7,8 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <Tweaks/FBTweak.h>
-#import <Tweaks/_FBTweakBindObserver.h>
+#import "FBTweak.h"
+#import "_FBTweakBindObserver.h"
 #import <objc/runtime.h>
 
 @interface _FBTweakBindObserver () <FBTweakObserver>

@@ -7,7 +7,7 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <Tweaks/_FBTweakTableViewIntegerCell.h>
+#import "_FBTweakTableViewIntegerCell.h"
 
 @interface _FBTweakTableViewIntegerCell ()
 

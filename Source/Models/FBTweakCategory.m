@@ -7,8 +7,8 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <Tweaks/FBTweakCategory.h>
-#import <Tweaks/FBTweakCollection.h>
+#import "FBTweakCategory.h"
+#import "FBTweakCollection.h"
 
 @interface FBTweakCategory ()
 

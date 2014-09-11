@@ -7,7 +7,7 @@
 //
 
 #import "FBTweakDemoController.h"
-#import <Tweaks/Tweaks.h>
+#import "Tweaks.h"
 
 @interface FBTweakDemoController ()
 

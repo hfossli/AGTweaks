@@ -7,14 +7,14 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <Tweaks/FBTweakEnabled.h>
-#import <Tweaks/FBAllTweaks.h>
-#import <Tweaks/FBTweakStore.h>
-#import <Tweaks/FBTweakCategory.h>
-#import <Tweaks/FBTweakCollection.h>
-#import <Tweaks/_FBTweakBindObserver.h>
-#import <Tweaks/_FBTweakEXTMetamacros.h>
-#import <Tweaks/_FBTweakCompilerMagic.h>
+#import "FBTweakEnabled.h"
+#import "FBAllTweaks.h"
+#import "FBTweakStore.h"
+#import "FBTweakCategory.h"
+#import "FBTweakCollection.h"
+#import "_FBTweakBindObserver.h"
+#import "_FBTweakEXTMetamacros.h"
+#import "_FBTweakCompilerMagic.h"
 
 #ifndef FBTweakMacrosInternal
 #define FBTweakMacrosInternal

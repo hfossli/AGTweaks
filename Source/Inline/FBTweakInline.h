@@ -7,8 +7,8 @@
  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <Tweaks/_FBTweakInlineInternal.h>
-#import <Tweaks/_FBTweakEXTMetamacros.h>
+#import "_FBTweakInlineInternal.h"
+#import "_FBTweakEXTMetamacros.h"
 
 #ifndef FBTweakMacros
 #define FBTweakMacros

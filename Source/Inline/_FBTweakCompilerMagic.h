@@ -8,7 +8,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <Tweaks/FBTweakEnabled.h>
+#import "FBTweakEnabled.h"
 
 
 #ifndef FBTweakCompilerMagic

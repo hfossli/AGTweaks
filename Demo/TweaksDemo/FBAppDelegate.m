@@ -72,8 +72,18 @@ FBTweakAction(@"Actions", @"Global", @"Two", ^{
         NSLog(@"Color: %@", color);
     }
     {
-        NSString *string = FBTweakSelectString(@"Category", @"Collection", @"Select", 1, @"Flat", @"Skeumorphic");
-        NSLog(@"Selected value: %@", string);
+        NSString *string = FBTweakSelectString(@"Category", @"Collection", @"Select", 0, @"Flat", @"Skeumorphic");
+        NSLog(@"Selected string: %@", string);
+    }
+    {
+        NSString *string = FBTweakSelectString(@"Category", @"Collection", @"Select among many", 1,
+                                               @"Speedy",
+                                               @"Slow",
+                                               @"Sluggish",
+                                               @"Whopping",
+                                               @"Vile",
+                                               @"Antsy");
+        NSLog(@"Selected string among many: %@", string);
     }
     {
         FBTweakAction(@"Category", @"Collection", @"Action", ^{
@@ -96,7 +106,7 @@ FBTweakAction(@"Actions", @"Global", @"Two", ^{
 - (void)explicitExample
 {
     FBBoolTweak *tweak = [[FBBoolTweak alloc] initWithIdentifier:@"com.tweaks.example.advanced"];
-    tweak.name = @"Advanced Settings";
+    tweak.name = @"Explicit example";
     tweak.defaultValue = YES;
     
     FBTweakStore *store = [FBTweakStore sharedInstance];

@@ -78,7 +78,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    self.tweak.currentValue = [textField.text integerValue];
+    self.tweak.currentValue = [textField.text doubleValue];
     [self updateTextFieldAndStepper];
 }
 

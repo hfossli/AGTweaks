@@ -119,7 +119,7 @@
  @param ... The block. The block should take an FBTweak subclass as an argument.
  @discussion Deallocates when 'self' is deallocated
  
-    FBTweakOnChange(@"Category", @"Collection", @"Name", ^(FBTweak *tweak) {
+    FBTweakRead(@"Category", @"Collection", @"Name", ^(FBTweak *tweak) {
         // code
     });
 

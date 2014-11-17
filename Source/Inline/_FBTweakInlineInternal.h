@@ -158,7 +158,6 @@
     [observer__ attachToObject:object_]; \
 })())
 
-
 // String
 
 #define _FBTweakStringInline(category_, collection_, name_, defaultValue_) (^{ \
@@ -214,17 +213,16 @@
         default: nil \
     )
 
-
 #define _FBTweakValue(category_, collection_, name_, defaultValue_, ...) (^{ \
-    return [_FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__) currentValue]; \
+    return (__typeof__(defaultValue_))[_FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__) currentValue]; \
 }())
 
 #define _FBTweakBindValue(object_, property_, category_, collection_, name_, defaultValue_, ...) ((^{ \
-    FBTweak *bindTweak_ = _FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
-    object_.property_ = _FBTweakValue(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
+    __typeof__(_FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__)) bindTweak_ = _FBTweakValueInline(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
+    object_.property_ = (__typeof__(defaultValue_))[bindTweak_ currentValue]; \
     _FBTweakBindObserver *observer__ = [[_FBTweakBindObserver alloc] initWithTweak:bindTweak_ block:^(id object__) { \
         __typeof__(object_) object___ = object__; \
-        object___.property_ = _FBTweakValue(category_, collection_, name_, defaultValue_, __VA_ARGS__); \
+        object___.property_ = (__typeof__(defaultValue_))[bindTweak_ currentValue]; \
     }]; \
     [observer__ attachToObject:object_]; \
 })())

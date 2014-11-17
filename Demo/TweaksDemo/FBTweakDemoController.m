@@ -44,8 +44,7 @@
     FBTweakBindObject(self.label, text, @"Demo", @"Text", @"String", @"Tweaks");
     FBTweakBindValue(self.label, alpha, @"Demo", @"Text", @"Alpha", 0.5, 0.0, 1.0);
 
-    #define default_font_size 60
-    self.label.font = [UIFont systemFontOfSize:FBTweakValue(@"Demo", @"Text", @"Fontsize", default_font_size)];
+    self.label.font = [UIFont systemFontOfSize:FBTweakValue(@"Demo", @"Text", @"Fontsize", 60)];
 
     #if FB_TWEAK_ENABLED
         __weak __typeof__(self) wself = self;
